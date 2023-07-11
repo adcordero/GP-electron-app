@@ -42,7 +42,7 @@
     text-align: center;
 }
 
-.name{
+.name, .password{
     display: flex;
     justify-content: space-between;
 }
@@ -53,12 +53,17 @@
     font-size: 14px;
 }
 
-.cont{
+.cont, .pass-cont{
     border-radius: 5px;
-    width: 360px;
+    width: 362px;
     background-color: #F9F9F9;
     font-size: 18px;
     color: #070707;
+}
+
+.pass-cont{
+    -webkit-text-security: disc;
+    text-security: disc;
 }
 
 .tag{
