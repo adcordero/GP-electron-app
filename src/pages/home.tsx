@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./home.css";
 import logo from "./images/GP_logomark_yellow.png";
-
 import { z } from "zod";
 
 const FormDataSchema = z.object({
@@ -10,6 +9,7 @@ const FormDataSchema = z.object({
   birthday: z.coerce.date(),
   email: z.string().email(),
   password: z.string().min(8, "Must be atleast 8 characters long"),
+  confirmpassword: z.string().min(8, "Must be atleast 8 characters long"),
 });
 
 function Home() {
@@ -129,8 +129,11 @@ function Home() {
               <input
                 type="password"
                 className="pass-cont"
-                onChange={(e) => retypePassword(e.target.value)}
-                value={retypePass}
+                onChange={(e) =>
+                  setFormData((prev) => {
+                    return { ...prev, confirmpassword: e.target.value };
+                  })
+                }
               ></input>
             </div>
           </div>
