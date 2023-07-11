@@ -29,11 +29,6 @@ function Home() {
     console.log(validation);
   };
 
-  const [retypePass, setRetypePass] = useState<string>("");
-  const retypePassword = (e: string) => {
-    setRetypePass(e);
-  };
-
   return (
     <div className="body">
       <div className="header">
