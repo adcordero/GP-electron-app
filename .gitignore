@@ -92,3 +92,6 @@ typings/
 out/
 
 .yarn/
+
+.yarnrc.yml
+yarn.lock
