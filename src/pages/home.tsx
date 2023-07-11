@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./home.css";
 import logo from "./images/GP_logomark_yellow.png";
+import footer from "./images/footer.png";
+import coins from "./images/coin.png";
 
 import { z } from "zod";
 
@@ -36,15 +38,16 @@ function Home() {
 
   return (
     <div className="body">
-      <div className="header">
-        <div>
-          <img src={logo}></img>
-        </div>
-        <div>
-          <h1 className="brand">
-            GAMER POINTS<span className="tm">™</span>
-          </h1>
-          <h3 className="heading">REGISTRATION</h3>
+        <div className="header">
+            <div>
+                <img src={logo} alt="Gamer Points™ logo" className="logo"></img>
+            </div>
+            <div>
+                <h1 className="brand">
+                    GAMER POINTS<span className="tm">™</span>
+                </h1>
+                <h3 className="heading">REGISTRATION</h3>
+            </div>
         </div>
 
         <form className="forms" onSubmit={submitHandler}>
@@ -59,6 +62,7 @@ function Home() {
                     return { ...prev, firstname: e.target.value };
                   })
                 }
+                style={{left: '-1px'}}
               ></input>
             </div>
 
@@ -72,6 +76,7 @@ function Home() {
                     return { ...prev, lastname: e.target.value };
                   })
                 }
+                style={{left: '5px'}}
               ></input>
             </div>
           </div>
@@ -81,7 +86,7 @@ function Home() {
             <input
               type="date"
               className="cont"
-              style={{ width: "728px" }}
+              style={{ width: "100%" }}
               onChange={(e) =>
                 setFormData((prev) => {
                   return { ...prev, birthday: e.target.value };
@@ -97,7 +102,7 @@ function Home() {
             <input
               type="email"
               className="cont"
-              style={{ width: "728px" }}
+              style={{ width: "100%" }}
               onChange={(e) =>
                 setFormData((prev) => {
                   return { ...prev, email: e.target.value };
@@ -119,6 +124,7 @@ function Home() {
                     return { ...prev, password: e.target.value };
                   })
                 }
+                style={{left: '-1px'}}
               ></input>
             </div>
 
@@ -130,7 +136,7 @@ function Home() {
                 type="password"
                 className="pass-cont"
                 onChange={(e) => retypePassword(e.target.value)}
-                value={retypePass}
+                value={retypePass} style={{left: '5px'}}
               ></input>
             </div>
           </div>
@@ -145,7 +151,13 @@ function Home() {
             />
           </div>
         </form>
-      </div>
+        
+        <div className="footer">
+            <img src={footer} alt="GP Currency" className="coins"></img>
+            {/* <img src={footer} alt="GP Currency" className="coin"></img> */}
+            {/* <img src={coins} alt="GP Currency" className="coins"></img>
+            <img src={coins} alt="GP Currency" className="coins"></img> */}
+        </div>
     </div>
   );
 }
