@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./home.css";
-import { Row, Col, Button } from "react-bootstrap";
-// import logo from "./images/GP_logomark yellow.png";
-// import { Password } from 'primereact/password';
+import logo from "./images/GP_logomark_yellow.png";
 
 import { z } from "zod";
 
@@ -40,7 +38,7 @@ function Home() {
     <div className="body">
       <div className="header">
         <div>
-          {/* <img src={require("./images/GP_logomark yellow.png")}></img> */}
+          <img src={logo}></img>
         </div>
         <div>
           <h1 className="brand">

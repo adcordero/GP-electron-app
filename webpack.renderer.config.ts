@@ -1,13 +1,17 @@
-import type { Configuration } from 'webpack';
+import type { Configuration } from "webpack";
 
-import { rules } from './webpack.rules';
-import { plugins } from './webpack.plugins';
+import { rules } from "./webpack.rules";
+import { plugins } from "./webpack.plugins";
 
 rules.push(
-    {
-      test: /\.css$/,
-      use: ['style-loader', 'css-loader', 'postcss-loader'],
-    }
+  {
+    test: /\.css$/,
+    use: ["style-loader", "css-loader", "postcss-loader"],
+  },
+  {
+    test: /\.(png|svg|jpg|jpeg|gif)$/i,
+    type: "asset/resource",
+  }
 );
 
 export const rendererConfig: Configuration = {
@@ -16,6 +20,6 @@ export const rendererConfig: Configuration = {
   },
   plugins,
   resolve: {
-    extensions: ['.js', '.ts', '.jsx', '.tsx', '.css'],
+    extensions: [".js", ".ts", ".jsx", ".tsx", ".css"],
   },
 };
