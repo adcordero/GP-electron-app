@@ -9,24 +9,26 @@ const FormDataSchema = z.object({
   birthday: z.coerce.date(),
   email: z.string().email(),
   password: z.string().min(8, "Must be atleast 8 characters long"),
-  confirmpassword: z.string().min(8, "Must be atleast 8 characters long"),
 });
 
 function Home() {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState<z.infer<typeof FormDataSchema>>({});
+  const [confirmPassword, setconfirmPassword] = useState("");
 
   const submitHandler = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // const output=FormDataSchema.safeParse({
-    //     firstname: "1",
-    //     lastname: "1",
-    //     birthday: "2023/12/01",
-    //     email: "test@gmail.com",
-    //     password: "12345678",
-    // });
+
     console.log(formData);
+
     const validation = FormDataSchema.safeParse(formData);
     console.log(validation);
+    console.log(validation.success);
+
+    if (validation.success) {
+      if (formData.password === confirmPassword) {
+        alert("Yay sign up");
+      }
+    }
   };
 
   return (
@@ -79,7 +81,7 @@ function Home() {
               style={{ width: "728px" }}
               onChange={(e) =>
                 setFormData((prev) => {
-                  return { ...prev, birthday: e.target.value };
+                  return { ...prev, birthday: new Date(e.target.value) };
                 })
               }
             ></input>
@@ -124,11 +126,7 @@ function Home() {
               <input
                 type="password"
                 className="pass-cont"
-                onChange={(e) =>
-                  setFormData((prev) => {
-                    return { ...prev, confirmpassword: e.target.value };
-                  })
-                }
+                onChange={(e) => setconfirmPassword(e.target.value)}
               ></input>
             </div>
           </div>
