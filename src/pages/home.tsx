@@ -139,7 +139,12 @@ function Home() {
           </div>
 
           <div className="buttons">
-            <input className="bttn" type="reset" value="Cancel" />
+            <input
+              className="bttn"
+              type="reset"
+              value="Cancel"
+              onClick={(e) => setFormData({})}
+            />
             <input
               className="bttn"
               style={{ backgroundColor: "#F2CB05" }}
