@@ -1,8 +1,33 @@
 import React, { useState } from "react";
 import "./home.css"
 import { Row, Col, Button } from "react-bootstrap";
+import { z } from "zod";
+
+const FormDataSchema = z.object({
+  firstname: z.string().min(1),
+  lastname: z.string().min(1),
+  birthday: z.coerce.date(),
+  email: z.string().email(),
+  password: z.string().min(8, "Must be atleast 8 characters long"),
+});
+
 
 function Home(){
+    const [formData, setFormData] = useState({});
+    
+    const submitHandler = (event: React.SyntheticEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        // const output=FormDataSchema.safeParse({
+        //     firstname: "1",
+        //     lastname: "1",
+        //     birthday: "2023/12/01",
+        //     email: "test@gmail.com",
+        //     password: "12345678",
+        // });
+        console.log(formData);
+        const validation = FormDataSchema.safeParse(formData);
+        console.log(validation);
+      };
 
     const [firstName, setFirstName]= useState<string>("");
     const [lastName, setLastName]= useState<string>("");
