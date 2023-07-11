@@ -1,0 +1,118 @@
+﻿schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User
+  deleteUser(input: DeleteUserInput!): User
+  updateUser(input: UpdateUserInput!): User
+}
+
+type Query {
+  getUser(email: AWSEmail!): User
+  listUsers(filter: TableUserFilterInput, limit: Int, nextToken: String): UserConnection
+}
+
+type Subscription {
+  onCreateUser(bday: AWSDate, email: AWSEmail, firstname: String, lastname: String, password: String): User @aws_subscribe(mutations : ["createUser"])
+  onDeleteUser(bday: AWSDate, email: AWSEmail, firstname: String, lastname: String, password: String): User @aws_subscribe(mutations : ["deleteUser"])
+  onUpdateUser(bday: AWSDate, email: AWSEmail, firstname: String, lastname: String, password: String): User @aws_subscribe(mutations : ["updateUser"])
+}
+
+type User {
+  bday: AWSDate!
+  email: AWSEmail!
+  firstname: String!
+  lastname: String!
+  password: String!
+}
+
+type UserConnection {
+  items: [User]
+  nextToken: String
+}
+
+input CreateUserInput {
+  bday: AWSDate!
+  email: AWSEmail!
+  firstname: String!
+  lastname: String!
+  password: String!
+}
+
+input DeleteUserInput {
+  email: AWSEmail!
+}
+
+input TableBooleanFilterInput {
+  eq: Boolean
+  ne: Boolean
+}
+
+input TableFloatFilterInput {
+  between: [Float]
+  contains: Float
+  eq: Float
+  ge: Float
+  gt: Float
+  le: Float
+  lt: Float
+  ne: Float
+  notContains: Float
+}
+
+input TableIDFilterInput {
+  beginsWith: ID
+  between: [ID]
+  contains: ID
+  eq: ID
+  ge: ID
+  gt: ID
+  le: ID
+  lt: ID
+  ne: ID
+  notContains: ID
+}
+
+input TableIntFilterInput {
+  between: [Int]
+  contains: Int
+  eq: Int
+  ge: Int
+  gt: Int
+  le: Int
+  lt: Int
+  ne: Int
+  notContains: Int
+}
+
+input TableStringFilterInput {
+  beginsWith: String
+  between: [String]
+  contains: String
+  eq: String
+  ge: String
+  gt: String
+  le: String
+  lt: String
+  ne: String
+  notContains: String
+}
+
+input TableUserFilterInput {
+  bday: TableStringFilterInput
+  email: TableStringFilterInput
+  firstname: TableStringFilterInput
+  lastname: TableStringFilterInput
+  password: TableStringFilterInput
+}
+
+input UpdateUserInput {
+  bday: AWSDate
+  email: AWSEmail!
+  firstname: String
+  lastname: String
+  password: String
+}
