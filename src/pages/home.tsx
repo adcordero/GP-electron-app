@@ -1,17 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
+import "./home.css"
+import { Row, Col, Button } from "react-bootstrap";
 
 function Home(){
-    return <div>
-        <h2>Registration Form</h2>
-        <form className="flex flex-col" action="">
-            <input type="text" name="First Name" id="firstname" />
-            <input type="text" name="Last Name" id="lastname" />
-            <input type="date" name="Birthday" id="birthday" />
-            <input type="text" name="Email" id="email" />
-            <input type="text" name="Password" id="password" />
-            <input type="button" value="Submit" />
-        </form>
-    </div>
+
+    const [firstName, setFirstName]= useState<string>("");
+    const [lastName, setLastName]= useState<string>("");
+
+    const typeFirstName = (e:string) => {
+        setFirstName(e);
+    }
+
+    const typeLastName = (e:string) => {
+        setLastName(e);
+    }
+
+    return (
+        <div className="body">
+            
+            <div className="header">
+                <div>
+                    {/* <img></img> */}
+                </div>
+                <div>
+                    <h1 className="brand">GAMER POINTS<span className="tm">™</span></h1>
+                    <h3 className="heading">REGISTRATION</h3>
+                </div>
+
+                <div className="forms">
+                    <div className="name">
+                        <div>
+                            <p className="half-tag">First Name</p>
+                            <input type="text" className="cont" onChange={(e) => typeFirstName(e.target.value)}></input>
+                        </div>
+
+                        <div>
+                            <p className="half-tag">Last Name</p>
+                            <input type="text" className="cont" onChange={(e) => typeLastName(e.target.value)}></input>
+                        </div>
+                    </div>
+
+                    <div className="birthday">
+                        <p className="tag">Birthday</p>
+                        <input type="text" className="cont" style={{width: '730px'}}></input>
+                    </div>
+
+                    <div className="birthday">
+                        <p className="tag" style={{left: '-340px'}}>Email</p>
+                        <input type="text" className="cont" style={{width: '730px'}}></input>
+                    </div>
+
+                    <div className="name">
+                        <div>
+                            <p className="half-tag" style={{left: '-145px'}}>Password</p>
+                            <input type="text" className="cont"></input>
+                        </div>
+
+                        <div>
+                            <p className="half-tag" style={{left: '-120px'}}>Password Retype</p>
+                            <input type="text" className="cont"></input>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="buttons">
+                    <Button className="bttn">Cancel</Button>
+                    <Button className="bttn" style={{backgroundColor: '#F2CB05'}}>Sign Up</Button>
+                </div>
+            </div>
+
+        </div>
+    );
 };
 
 export default Home;

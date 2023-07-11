@@ -48,10 +48,12 @@
     "webpack": "^5.88.1"
   },
   "dependencies": {
+    "bootstrap": "^5.0.1",
     "@apollo/client": "^3.7.17",
     "electron-squirrel-startup": "^1.0.0",
     "graphql": "^16.7.1",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0"
   }
 }
