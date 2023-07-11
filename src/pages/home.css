@@ -1,0 +1,84 @@
+.body{
+    background-color: #070707;
+    color: #FFFFFF;
+}
+
+.header{
+    text-align: center;
+    /* align-items: center; */
+}
+
+.brand{
+    /* color: #FFFFFF; */
+    font-family: 'Albert Sans';
+    top: 29px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    /* line-height: 30px; */
+}
+
+.tm{
+    font-weight: 400;
+}
+
+.heading{
+    /* color: #FFFFFF; */
+    font-family: 'Albert Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    /* line-height: 24px; */
+    /* position: absolute; */
+    /* left: 215px; */
+    top: px;
+    position: relative;
+    top: -15px;
+}
+
+.forms{
+    margin: 0 29px 0 29px;
+    align-items: center;
+    text-align: center;
+}
+
+.name{
+    display: flex;
+    justify-content: space-between;
+}
+
+.half-tag{
+    position: relative;
+    left: -140px;
+    font-size: 14px;
+}
+
+.cont{
+    border-radius: 5px;
+    width: 360px;
+    background-color: #F9F9F9;
+    font-size: 18px;
+    color: #070707;
+}
+
+.tag{
+    position: relative;
+    left: -332px;
+    font-size: 14px;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 30px 29px 30px 29px;
+    padding-bottom: 30px;
+    align-items: center;
+}
+
+.bttn{
+    background-color: #FFFFFF;
+    color: #070707;
+    padding: 5px;
+    border-radius: 4px;
+    width: 200px;
+}
