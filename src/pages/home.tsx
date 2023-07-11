@@ -4,7 +4,6 @@ import { Row, Col, Button } from "react-bootstrap";
 // import logo from "./images/GP_logomark yellow.png";
 
 // import { Password } from 'primereact/password';
-        
 
 function Home(){
 
@@ -18,7 +17,6 @@ function Home(){
 
     // const [showPass, setShowPass] = useState<boolean>(false);
     // const [showRetype, setShowRetype] = useState<boolean>(false);
-
 
     const typeFirstName = (e:string) => {
         setFirstName(e);
@@ -104,8 +102,6 @@ function Home(){
                         <button className="bttn" style={{backgroundColor: '#F2CB05'}} type="submit">Sign Up</button>
                     </div>
                 </form>
-
-                
             </div>
 
         </div>
