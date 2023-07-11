@@ -31,47 +31,9 @@ function Home() {
     console.log(validation);
   };
 
-  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
-  // const [lastName, setLastName]= useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [Password, setPassword] = useState<string>("");
   const [retypePass, setRetypePass] = useState<string>("");
-  // const []
-
-  // const [showPass, setShowPass] = useState<boolean>(false);
-  // const [showRetype, setShowRetype] = useState<boolean>(false);
-
-  const typeFirstName = (e: string) => {
-    setFirstName(e);
-  };
-
-  const typeLastName = (e: string) => {
-    setLastName(e);
-  };
-
-  const typeEmail = (e: string) => {
-    setEmail(e);
-  };
-
-  const typePassword = (e: string) => {
-    setPassword(e);
-  };
-
   const retypePassword = (e: string) => {
     setRetypePass(e);
-  };
-
-  // const handleShowPassword = () => {
-
-  // }
-
-  const resetForm = () => {
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPassword("");
-    setRetypePass("");
   };
 
   return (
@@ -176,16 +138,13 @@ function Home() {
           </div>
 
           <div className="buttons">
-            <button className="bttn" onClick={() => resetForm()}>
-              Cancel
-            </button>
-            <button
+            <input className="bttn" type="reset" value="Cancel" />
+            <input
               className="bttn"
               style={{ backgroundColor: "#F2CB05" }}
               type="submit"
-            >
-              Sign Up
-            </button>
+              value="Sign Up"
+            />
           </div>
         </form>
       </div>
