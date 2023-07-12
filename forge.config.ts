@@ -18,7 +18,7 @@ const config: ForgeConfig = {
   plugins: [
     new AutoUnpackNativesPlugin({}),
     new WebpackPlugin({
-      devContentSecurityPolicy: 'default-src \'self\' \'unsafe-inline\' data:; script-src \'self\' \'unsafe-eval\' \'unsafe-inline\' data:; connect-src \'self\' https://vn5qfc9uwl.execute-api.ap-southeast-1.amazonaws.com/Coding',
+      devContentSecurityPolicy: 'default-src \'self\' \'unsafe-inline\' data:; script-src \'self\' \'unsafe-eval\' \'unsafe-inline\' data:; connect-src \'self\' https://vn5qfc9uwl.execute-api.ap-southeast-1.amazonaws.com/Coding https://oc54upda5b.execute-api.ap-southeast-1.amazonaws.com/Coding',
       mainConfig,
       renderer: {
         config: rendererConfig,

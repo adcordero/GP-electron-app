@@ -3,14 +3,14 @@ import { z } from "zod";
 
 export const SignInDataSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(8, "Must be atleast 8 characters long"),
+  password: z.string(),
 });
 
 export async function APISingIn(formData: z.infer<typeof SignInDataSchema>) {
   try {
     SignInDataSchema.parse(formData);
     await axios
-      .post("INSERT LINK HERE", formData)
+      .post("https://oc54upda5b.execute-api.ap-southeast-1.amazonaws.com/Coding", formData)
       .then(function (response) {
         if (response.data.body.success) {
           console.log("Successfully signed in!");
