@@ -3,9 +3,8 @@ import "./home.css";
 import logo from "./images/GP_logomark_yellow.png";
 import footer from "./images/footer.png";
 import coins from "./images/coin.png";
-
 import { z } from "zod";
-
+import axios from "axios";
 const FormDataSchema = z.object({
   firstname: z.string().min(1),
   lastname: z.string().min(1),
@@ -15,25 +14,36 @@ const FormDataSchema = z.object({
 });
 
 function Home() {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState<z.infer<typeof FormDataSchema>>({});
+  const [confirmPassword, setconfirmPassword] = useState("");
 
-  const submitHandler = (event: React.SyntheticEvent<HTMLFormElement>) => {
+  const submitHandler = async (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // const output=FormDataSchema.safeParse({
-    //     firstname: "1",
-    //     lastname: "1",
-    //     birthday: "2023/12/01",
-    //     email: "test@gmail.com",
-    //     password: "12345678",
-    // });
+
     console.log(formData);
+
     const validation = FormDataSchema.safeParse(formData);
     console.log(validation);
-  };
+    console.log(validation.success);
 
-  const [retypePass, setRetypePass] = useState<string>("");
-  const retypePassword = (e: string) => {
-    setRetypePass(e);
+    if (validation.success) {
+      if (formData.password === confirmPassword) {
+        await axios.post('https://vn5qfc9uwl.execute-api.ap-southeast-1.amazonaws.com/Coding', formData)
+          .then(function (response) {
+            if(response.data.body.success) {
+              alert("Successfully signed up!");
+            } else {
+              alert("User exists.");
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        // alert("Yay sign up");
+      } else {
+        alert("Confirmed password does not match initial password.");
+      }
+    }
   };
 
   return (
@@ -89,7 +99,7 @@ function Home() {
               style={{ width: "100%" }}
               onChange={(e) =>
                 setFormData((prev) => {
-                  return { ...prev, birthday: e.target.value };
+                  return { ...prev, birthday: new Date(e.target.value) };
                 })
               }
             ></input>
@@ -135,14 +145,19 @@ function Home() {
               <input
                 type="password"
                 className="pass-cont"
-                onChange={(e) => retypePassword(e.target.value)}
-                value={retypePass} style={{left: '5px'}}
+                style={{left: '5px'}}
+                onChange={(e) => setconfirmPassword(e.target.value)}
               ></input>
             </div>
           </div>
 
           <div className="buttons">
-            <input className="bttn" type="reset" value="Cancel" />
+            <input
+              className="bttn"
+              type="reset"
+              value="Cancel"
+              onClick={(e) => setFormData({})}
+            />
             <input
               className="bttn"
               style={{ backgroundColor: "#F2CB05" }}
