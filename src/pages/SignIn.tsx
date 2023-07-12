@@ -1,9 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import signin_bg from "./images/sign_in.png";
 import logo from "./images/GP_logomark_yellow.png";
 
 export default function SignIn() {
+
+  let navigate = useNavigate();
+
+  const routeChange = (toGo:string) => {
+    // let path = toGo;
+    navigate(toGo);
+  }
+
   return (
     <div style={{backgroundImage: `url(${signin_bg})`}}>
       {/* <h2>SignIn Page</h2>
@@ -46,12 +54,12 @@ export default function SignIn() {
         </div>
 
         <div className="pt-10">
-          <input
+          <button
             className="h-8 w-28 bg-white-200/50 ml-9 rounded text-white-100 font-albert-sans"
-            type="reset"
-            value="Sign Up"
-            // onClick={(e) => setFormData({})}
-          />
+            type="button"
+            // value="Sign Up"
+            onClick={() => routeChange('signup')}
+          >Sign Up</button>
           <input
             className="h-8 w-28 bg-yellow-300/50 ml-8 rounded text-white-100 font-albert-sans"
             // style={{ backgroundColor: "#F2CB05" }}
