@@ -1,11 +1,20 @@
 .body{
     background-color: #070707;
     color: #FFFFFF;
+    align-items: center;
+    text-align: center;
 }
 
 .header{
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /* align-items: center; */
+}
+
+.logo{
+    width: 100px;
 }
 
 .brand{
@@ -44,7 +53,7 @@
 
 .name, .password{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .half-tag{
@@ -55,15 +64,11 @@
 
 .cont, .pass-cont{
     border-radius: 5px;
-    width: 362px;
+    position: relative;
+    width: 375px;
     background-color: #F9F9F9;
     font-size: 18px;
     color: #070707;
-}
-
-.pass-cont{
-    -webkit-text-security: disc;
-    text-security: disc;
 }
 
 .tag{
@@ -75,8 +80,8 @@
 .buttons{
     display: flex;
     justify-content: space-evenly;
-    margin: 30px 29px 30px 29px;
-    padding-bottom: 30px;
+    margin: 030px 29px 0px 29px;
+    /* padding-bottom: 30px; */
     align-items: center;
 }
 
@@ -86,4 +91,11 @@
     padding: 5px;
     border-radius: 4px;
     width: 200px;
+}
+
+.coins{
+    /* height: 68px; */
+    /* width: 100px; */
+    width: 100vw;
+    height: max-content;
 }
