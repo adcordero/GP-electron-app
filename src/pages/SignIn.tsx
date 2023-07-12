@@ -15,7 +15,7 @@ export default function SignIn() {
         </h1>        
       </div>
 
-      <form className="justify-items-center items-center pt-10 pl-10">
+      <form className="justify-items-center items-center pt-5 pl-10">
         <div>
           <label className="text-white-200 text-md relative left-2">
             Email
@@ -61,9 +61,9 @@ export default function SignIn() {
         </div>
       </form>
 
-      <div className="justify-items-center items-center pt-5 pl-10">
+      <div className="justify-items-center items-center pt-8 pl-10">
         <p className="text-yellow-500 font-albert-sans font-bold text-base">TURN YOUR GAMING <br/> PASSION INTO PROFESSION</p>
-        <p className="text-white-100"><span>Gamer Points™</span> is a gaming/ad-tech <br/> company platform that allows you to <br/> passively earn real world money by <br/>playing your favorite video game.</p>
+        <p className="text-white-100 font-poppins text-xs pt-1.5 pb-2"><span className="font-semibold">Gamer Points™</span> is a gaming/ad-tech <br/> company platform that allows you to <br/> passively earn real world money by <br/>playing your favorite video game.</p>
       </div>
     </div>
   );
