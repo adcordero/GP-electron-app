@@ -34,89 +34,67 @@ function SignUp() {
         </div>
       </div>
 
-      <form className="forms" onSubmit={submitHandler}>
-        <div className="name">
-          <div>
-            <label className="half-tag">First Name</label>
-            <input
-              type="text"
-              className="cont"
-              onChange={(e) =>
-                setFormData((prev) => {
-                  return { ...prev, firstname: e.target.value };
-                })
-              }
-              // style={{ left: "-1px" }}
-            ></input>
-          </div>
-
-          <div>
-            <label className="half-tag">Last Name</label>
-            <input
-              type="text"
-              className="cont"
-              onChange={(e) =>
-                setFormData((prev) => {
-                  return { ...prev, lastname: e.target.value };
-                })
-              }
-              // style={{ left: "5px" }}
-            ></input>
-          </div>
+      <form
+        className="mx-[29px] grid grid-cols-2 text-left grid-flow-row gap-x-2"
+        onSubmit={submitHandler}
+      >
+        <div className="flex flex-col">
+          <label>First Name</label>
+          <input
+            type="text"
+            className="input"
+            onChange={(e) =>
+              setFormData((prev) => {
+                return { ...prev, firstname: e.target.value };
+              })
+            }
+          ></input>
         </div>
 
-        {/* <div>
-          <label className="tag">Birthday</label>
+        <div className="flex flex-col">
+          <label>Last Name</label>
+          <input
+            type="text"
+            className="input"
+            onChange={(e) =>
+              setFormData((prev) => {
+                return { ...prev, lastname: e.target.value };
+              })
+            }
+          ></input>
+        </div>
+
+        <div className="flex flex-col">
+          <label>Birthday</label>
           <input
             type="date"
-            className="cont"
-            style={{ width: "100%" }}
+            className="input"
             onChange={(e) =>
               setFormData((prev) => {
                 return { ...prev, birthday: new Date(e.target.value) };
               })
             }
           ></input>
-        </div> */}
-
-        <div className="bday-un">
-          <div>
-            <label className="half-tag" style={{ left: "-158px" }}>
-              Birthday
-            </label>
-            <input
-              type="date"
-              className="cont"
-              onChange={(e) =>
-                setFormData((prev) => {
-                  return { ...prev, birthday: new Date(e.target.value) };
-                })
-              }
-            ></input>
-          </div>
-
-          <div>
-            <label className="half-tag">Username</label>
-            <input
-              type="text"
-              className="cont"
-              // onChange={(e) =>
-              //   setFormData((prev) => {
-              //     return { ...prev, username: e.target.value };
-              //   })
-              // }
-            ></input>
-          </div>
         </div>
 
-        <div>
-          <label className="tag" style={{ left: "-360px" }}>
-            Email
-          </label>
+        <div className="flex flex-col">
+          <label>Username</label>
+          <input
+            type="text"
+            className="input"
+            // onChange={(e) =>
+            //   setFormData((prev) => {
+            //     return { ...prev, username: e.target.value };
+            //   })
+            // }
+          ></input>
+        </div>
+
+        <div className="flex flex-col col-span-2">
+          <label>Email</label>
           <input
             type="email"
-            className="cont"
-            style={{ width: "100%" }}
+            className="input"
             onChange={(e) =>
               setFormData((prev) => {
                 return { ...prev, email: e.target.value };
@@ -125,46 +103,37 @@ function SignUp() {
           ></input>
         </div>
 
-        <div className="password">
-          <div>
-            <label className="half-tag" style={{ left: "-155px" }}>
-              Password
-            </label>
-            <input
-              type="text"
-              className="cont"
-              onChange={(e) =>
-                setFormData((prev) => {
-                  return { ...prev, password: e.target.value };
-                })
-              }
-              style={{ left: "-1px" }}
-            ></input>
-          </div>
-
-          <div>
-            <label className="half-tag" style={{ left: "-125px" }}>
-              Password Retype
-            </label>
-            <input
-              type="password"
-              className="pass-cont"
-              style={{ left: "5px" }}
-              onChange={(e) => setconfirmPassword(e.target.value)}
-            ></input>
-          </div>
+        <div className="flex flex-col">
+          <label>Password</label>
+          <input
+            type="text"
+            className="input"
+            onChange={(e) =>
+              setFormData((prev) => {
+                return { ...prev, password: e.target.value };
+              })
+            }
+          ></input>
         </div>
 
-        <div className="buttons">
+        <div className="flex flex-col">
+          <label>Password Retype</label>
           <input
-            className="bttn"
+            type="password"
+            className="input"
+            onChange={(e) => setconfirmPassword(e.target.value)}
+          ></input>
+        </div>
+
+        <div className="col-span-2 flex justify-evenly align-middle my-[30px]">
+          <input
+            className="button button-secondary"
             type="reset"
             value="Cancel"
             onClick={(e) => setFormData({})}
           />
           <input
-            className="bttn"
-            style={{ backgroundColor: "#F2CB05" }}
+            className="button button-primary"
             type="submit"
             value="Sign Up"
           />
@@ -172,7 +141,7 @@ function SignUp() {
       </form>
 
       <div className="footer">
-        <img src={footer} alt="GP Currency" className="coins"></img>
+        <img src={footer} alt="GP Currency" className="w-screen h-max"></img>
       </div>
     </div>
   );
