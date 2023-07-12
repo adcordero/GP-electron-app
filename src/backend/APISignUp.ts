@@ -1,7 +1,7 @@
 import axios from "axios";
 import { z } from "zod";
 
-export const FormDataSchema = z.object({
+export const SignUpDataSchema = z.object({
   firstname: z.string().min(1),
   lastname: z.string().min(1),
   birthday: z.coerce.date(),
@@ -10,11 +10,11 @@ export const FormDataSchema = z.object({
 });
 
 export async function APISingUp(
-  formData: z.infer<typeof FormDataSchema>,
+  formData: z.infer<typeof SignUpDataSchema>,
   confirmPassword: string
 ) {
   try {
-    FormDataSchema.parse(formData);
+    SignUpDataSchema.parse(formData);
     if (formData.password === confirmPassword) {
       await axios
         .post(

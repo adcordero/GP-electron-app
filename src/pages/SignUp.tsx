@@ -4,10 +4,12 @@ import logo from "./images/GP_logomark_yellow.png";
 import footer from "./images/footer.png";
 import coins from "./images/coin.png";
 import { z } from "zod";
-import { APISingUp, FormDataSchema } from "../backend/APISignUp";
+import backend from "../backend";
 
 function SignUp() {
-  const [formData, setFormData] = useState<z.infer<typeof FormDataSchema>>({});
+  const [formData, setFormData] = useState<
+    z.infer<typeof backend.schema.signup>
+  >({});
   const [confirmPassword, setconfirmPassword] = useState("");
 
   const submitHandler = async (
@@ -15,7 +17,7 @@ function SignUp() {
   ) => {
     event.preventDefault();
 
-    const reponse = await APISingUp(formData, confirmPassword);
+    const reponse = await backend.api.signup(formData, confirmPassword);
   };
 
   return (
@@ -79,17 +81,17 @@ function SignUp() {
 
         <div className="bday-un">
           <div>
-            <label className="half-tag"
-            style={{left: '-158px'}}
-            >Birthday</label>
+            <label className="half-tag" style={{ left: "-158px" }}>
+              Birthday
+            </label>
             <input
-            type="date"
-            className="cont"
-            onChange={(e) =>
-              setFormData((prev) => {
-                return { ...prev, birthday: new Date(e.target.value) };
-              })
-            }
+              type="date"
+              className="cont"
+              onChange={(e) =>
+                setFormData((prev) => {
+                  return { ...prev, birthday: new Date(e.target.value) };
+                })
+              }
             ></input>
           </div>
 
@@ -125,7 +127,7 @@ function SignUp() {
 
         <div className="password">
           <div>
-            <label className="half-tag" style={{left: '-155px'}}>
+            <label className="half-tag" style={{ left: "-155px" }}>
               Password
             </label>
             <input
