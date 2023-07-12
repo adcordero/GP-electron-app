@@ -44,7 +44,7 @@ function SignUp() {
                   return { ...prev, firstname: e.target.value };
                 })
               }
-              style={{ left: "-1px" }}
+              // style={{ left: "-1px" }}
             ></input>
           </div>
 
@@ -58,12 +58,12 @@ function SignUp() {
                   return { ...prev, lastname: e.target.value };
                 })
               }
-              style={{ left: "5px" }}
+              // style={{ left: "5px" }}
             ></input>
           </div>
         </div>
 
-        <div>
+        {/* <div>
           <label className="tag">Birthday</label>
           <input
             type="date"
@@ -75,10 +75,40 @@ function SignUp() {
               })
             }
           ></input>
+        </div> */}
+
+        <div className="bday-un">
+          <div>
+            <label className="half-tag"
+            style={{left: '-158px'}}
+            >Birthday</label>
+            <input
+            type="date"
+            className="cont"
+            onChange={(e) =>
+              setFormData((prev) => {
+                return { ...prev, birthday: new Date(e.target.value) };
+              })
+            }
+            ></input>
+          </div>
+
+          <div>
+            <label className="half-tag">Username</label>
+            <input
+              type="text"
+              className="cont"
+              // onChange={(e) =>
+              //   setFormData((prev) => {
+              //     return { ...prev, username: e.target.value };
+              //   })
+              // }
+            ></input>
+          </div>
         </div>
 
         <div>
-          <label className="tag" style={{ left: "-340px" }}>
+          <label className="tag" style={{ left: "-360px" }}>
             Email
           </label>
           <input
@@ -95,7 +125,7 @@ function SignUp() {
 
         <div className="password">
           <div>
-            <label className="half-tag" style={{ left: "-145px" }}>
+            <label className="half-tag" style={{left: '-155px'}}>
               Password
             </label>
             <input
@@ -111,7 +141,7 @@ function SignUp() {
           </div>
 
           <div>
-            <label className="half-tag" style={{ left: "-120px" }}>
+            <label className="half-tag" style={{ left: "-125px" }}>
               Password Retype
             </label>
             <input
@@ -141,9 +171,6 @@ function SignUp() {
 
       <div className="footer">
         <img src={footer} alt="GP Currency" className="coins"></img>
-        {/* <img src={footer} alt="GP Currency" className="coin"></img> */}
-        {/* <img src={coins} alt="GP Currency" className="coins"></img>
-            <img src={coins} alt="GP Currency" className="coins"></img> */}
       </div>
     </div>
   );
