@@ -2,10 +2,10 @@ import React from "react";
 import * as ReactDOMClient from "react-dom/client";
 import { HashRouter, Route, Routes } from "react-router-dom";
 // import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import Landing from "./pages/Landing";
+// import Landing from "./pages/landing";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
-import Home from "./pages/Home";
+import Home from "./pages/home";
 
 const container = document.getElementById("app");
 // Create a root.
@@ -22,9 +22,9 @@ root.render(
   // <ApolloProvider client={client}>
   <HashRouter>
     <Routes>
-      <Route path="/" Component={Landing} />
+      <Route path="/" Component={SignIn} />
       <Route path="/signup" Component={SignUp} />
-      <Route path="/signin" Component={SignIn} />
+      {/* <Route path="/signin" Component={SignIn} /> */}
       <Route path="/home" Component={Home} />
     </Routes>
   </HashRouter>
