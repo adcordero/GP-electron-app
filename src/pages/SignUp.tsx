@@ -4,14 +4,7 @@ import logo from "./images/GP_logomark_yellow.png";
 import footer from "./images/footer.png";
 import coins from "./images/coin.png";
 import { z } from "zod";
-import axios from "axios";
-const FormDataSchema = z.object({
-  firstname: z.string().min(1),
-  lastname: z.string().min(1),
-  birthday: z.coerce.date(),
-  email: z.string().email(),
-  password: z.string().min(8, "Must be atleast 8 characters long"),
-});
+import { APISingUp, FormDataSchema } from "../backend/APISignUp";
 
 function SignUp() {
   const [formData, setFormData] = useState<z.infer<typeof FormDataSchema>>({});
@@ -21,41 +14,8 @@ function SignUp() {
     event: React.SyntheticEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
-    console.log(formData);
 
-    // dialog.showMessageBox({
-    //   type: 'question',
-    //   title: 'Question',
-    //   message: 'Do you want to do this?',
-    // });
-
-    try {
-      FormDataSchema.parse(formData);
-      if (formData.password === confirmPassword) {
-        await axios
-          .post(
-            "https://vn5qfc9uwl.execute-api.ap-southeast-1.amazonaws.com/Coding",
-            formData
-          )
-          .then(function (response) {
-            if (response.data.body.success) {
-              alert("Successfully signed up!");
-            } else {
-              alert("User exists.");
-            }
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      } else {
-        alert("Confirmed password does not match initial password.");
-      }
-    } catch (err) {
-      if (err instanceof z.ZodError) {
-        alert(`Field: ${err.issues[0].path[0]} - ${err.issues[0].message}`);
-        console.log(err.issues);
-      }
-    }
+    const reponse = await APISingUp(formData, confirmPassword);
   };
 
   return (
