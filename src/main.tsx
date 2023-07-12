@@ -4,7 +4,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 // import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 
 const container = document.getElementById("app");
 // Create a root.
