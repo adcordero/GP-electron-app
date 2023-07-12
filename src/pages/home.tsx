@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./home.css";
 import logo from "./images/GP_logomark_yellow.png";
 import { z } from "zod";
-
+import axios from "axios";
 const FormDataSchema = z.object({
   firstname: z.string().min(1),
   lastname: z.string().min(1),
@@ -15,7 +15,7 @@ function Home() {
   const [formData, setFormData] = useState<z.infer<typeof FormDataSchema>>({});
   const [confirmPassword, setconfirmPassword] = useState("");
 
-  const submitHandler = (event: React.SyntheticEvent<HTMLFormElement>) => {
+  const submitHandler = async (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     console.log(formData);
@@ -26,7 +26,20 @@ function Home() {
 
     if (validation.success) {
       if (formData.password === confirmPassword) {
-        alert("Yay sign up");
+        await axios.post('https://vn5qfc9uwl.execute-api.ap-southeast-1.amazonaws.com/Coding', formData)
+          .then(function (response) {
+            if(response.data.body.success) {
+              alert("Successfully signed up!");
+            } else {
+              alert("User exists.");
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        // alert("Yay sign up");
+      } else {
+        alert("Confirmed password does not match initial password.");
       }
     }
   };
