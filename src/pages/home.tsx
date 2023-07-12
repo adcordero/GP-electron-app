@@ -17,20 +17,28 @@ function Home() {
   const [formData, setFormData] = useState<z.infer<typeof FormDataSchema>>({});
   const [confirmPassword, setconfirmPassword] = useState("");
 
-  const submitHandler = async (event: React.SyntheticEvent<HTMLFormElement>) => {
+  const submitHandler = async (
+    event: React.SyntheticEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
-
     console.log(formData);
 
-    const validation = FormDataSchema.safeParse(formData);
-    console.log(validation);
-    console.log(validation.success);
+    // dialog.showMessageBox({
+    //   type: 'question',
+    //   title: 'Question',
+    //   message: 'Do you want to do this?',
+    // });
 
-    if (validation.success) {
+    try {
+      FormDataSchema.parse(formData);
       if (formData.password === confirmPassword) {
-        await axios.post('https://vn5qfc9uwl.execute-api.ap-southeast-1.amazonaws.com/Coding', formData)
+        await axios
+          .post(
+            "https://vn5qfc9uwl.execute-api.ap-southeast-1.amazonaws.com/Coding",
+            formData
+          )
           .then(function (response) {
-            if(response.data.body.success) {
+            if (response.data.body.success) {
               alert("Successfully signed up!");
             } else {
               alert("User exists.");
@@ -39,140 +47,144 @@ function Home() {
           .catch(function (error) {
             console.log(error);
           });
-        // alert("Yay sign up");
       } else {
         alert("Confirmed password does not match initial password.");
+      }
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        alert(`Field: ${err.issues[0].path[0]} - ${err.issues[0].message}`);
+        console.log(err.issues);
       }
     }
   };
 
   return (
     <div className="body">
-        <div className="header">
-            <div>
-                <img src={logo} alt="Gamer Points™ logo" className="logo"></img>
-            </div>
-            <div>
-                <h1 className="brand">
-                    GAMER POINTS<span className="tm">™</span>
-                </h1>
-                <h3 className="heading">REGISTRATION</h3>
-            </div>
+      <div className="header">
+        <div>
+          <img src={logo} alt="Gamer Points™ logo" className="logo"></img>
         </div>
+        <div>
+          <h1 className="brand">
+            GAMER POINTS<span className="tm">™</span>
+          </h1>
+          <h3 className="heading">REGISTRATION</h3>
+        </div>
+      </div>
 
-        <form className="forms" onSubmit={submitHandler}>
-          <div className="name">
-            <div>
-              <label className="half-tag">First Name</label>
-              <input
-                type="text"
-                className="cont"
-                onChange={(e) =>
-                  setFormData((prev) => {
-                    return { ...prev, firstname: e.target.value };
-                  })
-                }
-                style={{left: '-1px'}}
-              ></input>
-            </div>
-
-            <div>
-              <label className="half-tag">Last Name</label>
-              <input
-                type="text"
-                className="cont"
-                onChange={(e) =>
-                  setFormData((prev) => {
-                    return { ...prev, lastname: e.target.value };
-                  })
-                }
-                style={{left: '5px'}}
-              ></input>
-            </div>
-          </div>
-
+      <form className="forms" onSubmit={submitHandler}>
+        <div className="name">
           <div>
-            <label className="tag">Birthday</label>
+            <label className="half-tag">First Name</label>
             <input
-              type="date"
+              type="text"
               className="cont"
-              style={{ width: "100%" }}
               onChange={(e) =>
                 setFormData((prev) => {
-                  return { ...prev, birthday: new Date(e.target.value) };
+                  return { ...prev, firstname: e.target.value };
                 })
               }
+              style={{ left: "-1px" }}
             ></input>
           </div>
 
           <div>
-            <label className="tag" style={{ left: "-340px" }}>
-              Email
+            <label className="half-tag">Last Name</label>
+            <input
+              type="text"
+              className="cont"
+              onChange={(e) =>
+                setFormData((prev) => {
+                  return { ...prev, lastname: e.target.value };
+                })
+              }
+              style={{ left: "5px" }}
+            ></input>
+          </div>
+        </div>
+
+        <div>
+          <label className="tag">Birthday</label>
+          <input
+            type="date"
+            className="cont"
+            style={{ width: "100%" }}
+            onChange={(e) =>
+              setFormData((prev) => {
+                return { ...prev, birthday: new Date(e.target.value) };
+              })
+            }
+          ></input>
+        </div>
+
+        <div>
+          <label className="tag" style={{ left: "-340px" }}>
+            Email
+          </label>
+          <input
+            type="email"
+            className="cont"
+            style={{ width: "100%" }}
+            onChange={(e) =>
+              setFormData((prev) => {
+                return { ...prev, email: e.target.value };
+              })
+            }
+          ></input>
+        </div>
+
+        <div className="password">
+          <div>
+            <label className="half-tag" style={{ left: "-145px" }}>
+              Password
             </label>
             <input
-              type="email"
+              type="text"
               className="cont"
-              style={{ width: "100%" }}
               onChange={(e) =>
                 setFormData((prev) => {
-                  return { ...prev, email: e.target.value };
+                  return { ...prev, password: e.target.value };
                 })
               }
+              style={{ left: "-1px" }}
             ></input>
           </div>
 
-          <div className="password">
-            <div>
-              <label className="half-tag" style={{ left: "-145px" }}>
-                Password
-              </label>
-              <input
-                type="text"
-                className="cont"
-                onChange={(e) =>
-                  setFormData((prev) => {
-                    return { ...prev, password: e.target.value };
-                  })
-                }
-                style={{left: '-1px'}}
-              ></input>
-            </div>
-
-            <div>
-              <label className="half-tag" style={{ left: "-120px" }}>
-                Password Retype
-              </label>
-              <input
-                type="password"
-                className="pass-cont"
-                style={{left: '5px'}}
-                onChange={(e) => setconfirmPassword(e.target.value)}
-              ></input>
-            </div>
-          </div>
-
-          <div className="buttons">
+          <div>
+            <label className="half-tag" style={{ left: "-120px" }}>
+              Password Retype
+            </label>
             <input
-              className="bttn"
-              type="reset"
-              value="Cancel"
-              onClick={(e) => setFormData({})}
-            />
-            <input
-              className="bttn"
-              style={{ backgroundColor: "#F2CB05" }}
-              type="submit"
-              value="Sign Up"
-            />
+              type="password"
+              className="pass-cont"
+              style={{ left: "5px" }}
+              onChange={(e) => setconfirmPassword(e.target.value)}
+            ></input>
           </div>
-        </form>
-        
-        <div className="footer">
-            <img src={footer} alt="GP Currency" className="coins"></img>
-            {/* <img src={footer} alt="GP Currency" className="coin"></img> */}
-            {/* <img src={coins} alt="GP Currency" className="coins"></img>
-            <img src={coins} alt="GP Currency" className="coins"></img> */}
         </div>
+
+        <div className="buttons">
+          <input
+            className="bttn"
+            type="reset"
+            value="Cancel"
+            onClick={(e) => setFormData({})}
+          />
+          <input
+            className="bttn"
+            style={{ backgroundColor: "#F2CB05" }}
+            type="submit"
+            value="Sign Up"
+          />
+        </div>
+      </form>
+
+      <div className="footer">
+        <img src={footer} alt="GP Currency" className="coins"></img>
+        {/* <img src={footer} alt="GP Currency" className="coin"></img> */}
+        {/* <img src={coins} alt="GP Currency" className="coins"></img>
+            <img src={coins} alt="GP Currency" className="coins"></img> */}
+      </div>
     </div>
   );
 }
