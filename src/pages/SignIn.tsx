@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import signin_bg from "./images/sign_in.png";
 import logo from "./images/GP_logomark_yellow.png";
+import backend from "../backend";
+import { z } from "zod";
 
 export default function SignIn() {
+  const [formData, setFormData] = useState<
+    z.infer<typeof backend.schema.signin>
+  >({});
+  const [confirmPassword, setconfirmPassword] = useState("");
+
+  const submitHandler = async (
+    event: React.SyntheticEvent<HTMLFormElement>
+  ) => {
+    event.preventDefault();
+    const reponse = await backend.api.signin(formData);
+  };
 
   let navigate = useNavigate();
 
@@ -13,17 +26,23 @@ export default function SignIn() {
   }
 
   return (
-    <div style={{backgroundImage: `url(${signin_bg})`}}>
+    <div style={{ backgroundImage: `url(${signin_bg})` }}>
       {/* <h2>SignIn Page</h2>
       <Link to="/home">goto home page</Link> */}
       <div className="flex justify-items-center items-center text-center pt-5 pl-16">
         <img src={logo} alt="Gamer Points™ Logo" className="w-28"></img>
-        <h1 className="text-white-200 flex text-5xl font-albert-sans font-bold" >GAMER<br/>POINTS
-        <span className="text-2xl font-medium">™</span>
-        </h1>        
+        <h1 className="text-white-200 flex text-5xl font-albert-sans font-bold">
+          GAMER
+          <br />
+          POINTS
+          <span className="text-2xl font-medium">™</span>
+        </h1>
       </div>
 
-      <form className="justify-items-center items-center pt-5 pl-10">
+      <form
+        className="justify-items-center items-center pt-5 pl-10"
+        onSubmit={submitHandler}
+      >
         <div>
           <label className="text-white-200 text-md relative left-2">
             Email
@@ -33,11 +52,11 @@ export default function SignIn() {
             type="email"
             className="bg-white-200 w-5/12 rounded"
             // style={{ width: "365px", borderRadius: "5px"}}
-            // onChange={(e) =>
-            //   setFormData((prev) => {
-            //     return { ...prev, email: e.target.value };
-            //   })
-            // }
+            onChange={(e) =>
+              setFormData((prev) => {
+                return { ...prev, email: e.target.value };
+              })
+            }
           ></input>
         </div>
 
@@ -49,7 +68,11 @@ export default function SignIn() {
           <input
             type="password"
             className="bg-white-200 w-5/12 rounded"
-            // onChange={(e) => setconfirmPassword(e.target.value)}
+            onChange={(e) =>
+              setFormData((prev) => {
+                return { ...prev, password: e.target.value };
+              })
+            }
           ></input>
         </div>
 
@@ -69,9 +92,16 @@ export default function SignIn() {
         </div>
       </form>
 
-      <div className="justify-items-center items-center pt-5 pl-10">
-        <p className="text-yellow-500 font-albert-sans font-bold text-base">TURN YOUR GAMING <br/> PASSION INTO PROFESSION</p>
-        <p className="text-white-100 font-poppins text-xs pt-1.5 pb-5"><span className="font-semibold">Gamer Points™</span> is a gaming/ad-tech <br/> company platform that allows you to <br/> passively earn real world money by <br/>playing your favorite video game.</p>
+      <div className="justify-items-center items-center pt-8 pl-10">
+        <p className="text-yellow-500 font-albert-sans font-bold text-base">
+          TURN YOUR GAMING <br /> PASSION INTO PROFESSION
+        </p>
+        <p className="text-white-100 font-poppins text-xs pt-1.5 pb-2">
+          <span className="font-semibold">Gamer Points™</span> is a
+          gaming/ad-tech <br /> company platform that allows you to <br />{" "}
+          passively earn real world money by <br />
+          playing your favorite video game.
+        </p>
       </div>
     </div>
   );
