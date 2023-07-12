@@ -31,6 +31,9 @@ export default {
         "albert-sans": '"Albert Sans"',
         poppins: '"Poppins"',
       },
+      height: {
+        'overall': '479px',
+      }
     },
   },
   variants: {},
