@@ -15,15 +15,19 @@ export default function SignIn() {
     event: React.SyntheticEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
-    const reponse = await backend.api.signin(formData);
+    const signinresponse: { success: boolean; message: string } =
+      await backend.api.signin(formData);
+
+    if (signinresponse.success) {
+      navigate("home");
+    }
   };
 
   let navigate = useNavigate();
 
-  const routeChange = (toGo:string) => {
-    // let path = toGo;
+  const routeChange = (toGo: string) => {
     navigate(toGo);
-  }
+  };
 
   return (
     <div style={{ backgroundImage: `url(${signin_bg})` }}>
@@ -80,9 +84,10 @@ export default function SignIn() {
           <button
             className="h-8 w-28 bg-white-200/50 ml-9 rounded text-white-100 font-albert-sans"
             type="button"
-            // value="Sign Up"
-            onClick={() => routeChange('signup')}
-          >Sign Up</button>
+            onClick={() => routeChange("signup")}
+          >
+            Sign Up
+          </button>
           <input
             className="h-8 w-28 bg-yellow-300/50 ml-8 rounded text-white-100 font-albert-sans"
             // style={{ backgroundColor: "#F2CB05" }}
