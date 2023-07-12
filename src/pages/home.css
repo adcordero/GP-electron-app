@@ -51,21 +51,24 @@
     text-align: center;
 }
 
-.name, .password{
+.name, .password, .bday-un{
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
+    /* justify-content: center; */
+    text-align: center;
 }
 
 .half-tag{
     position: relative;
-    left: -140px;
+    left: -150px;
     font-size: 14px;
 }
 
 .cont, .pass-cont{
     border-radius: 5px;
-    position: relative;
-    width: 375px;
+    /* position: relative; */
+    width: 382px;
     background-color: #F9F9F9;
     font-size: 18px;
     color: #070707;
