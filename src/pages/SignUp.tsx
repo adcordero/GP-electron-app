@@ -3,11 +3,12 @@ import "./home.css";
 import logo from "./images/GP_logomark_yellow.png";
 import footer from "./images/footer.png";
 import { z } from "zod";
+import { SignUpDataSchema } from "../backend/APISignUp";
 
 function SignUp() {
-  const [formData, setFormData] = useState<
-    z.infer<typeof window.api.schema.signup>
-  >({});
+  const [formData, setFormData] = useState<z.infer<typeof SignUpDataSchema>>(
+    {}
+  );
   const [confirmPassword, setconfirmPassword] = useState("");
 
   const submitHandler = async (

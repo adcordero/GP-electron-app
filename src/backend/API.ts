@@ -4,10 +4,6 @@ import { APISingUp, SignUpDataSchema } from "./APISignUp";
 import IPC from "./IPCChannels";
 
 export const API = {
-  schema: {
-    signup: SignUpDataSchema,
-    signin: SignInDataSchema,
-  },
   signin: async function (formData: {}): Promise<{
     success: boolean;
     message: string;
@@ -28,8 +24,4 @@ export const API = {
 export type apiInterface = {
   signin: typeof APISingIn;
   signup: typeof APISingUp;
-  schema: {
-    signup: typeof SignUpDataSchema;
-    signin: typeof SignInDataSchema;
-  };
 };

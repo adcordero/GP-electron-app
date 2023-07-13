@@ -7,7 +7,7 @@ export const APIFillOutProfileDataSchema = z.object({
   displayname: z.string().min(1),
   sex: z.string().min(1),
   birthday: z.coerce.date(),
-  phonenumber: z.string().regex(new RegExp("+639[0-9]{9}")),
+  phonenumber: z.string().regex(new RegExp("[+]639[0-9]{9}")),
   discord: z.string().optional(),
 });
 

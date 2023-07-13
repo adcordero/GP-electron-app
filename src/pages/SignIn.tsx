@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import signin_bg from "./images/sign_in.png";
 import logo from "./images/GP_logomark_yellow.png";
 import { z } from "zod";
+import { SignInDataSchema } from "../backend/APISignIn";
 
 export default function SignIn() {
-  const [formData, setFormData] = useState<
-    z.infer<typeof window.api.schema.signin>
-  >({});
+  const [formData, setFormData] = useState<z.infer<typeof SignInDataSchema>>(
+    {}
+  );
 
   const submitHandler = async (
     event: React.SyntheticEvent<HTMLFormElement>
