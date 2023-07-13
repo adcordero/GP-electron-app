@@ -15,4 +15,8 @@
   .input {
     @apply rounded-[5px] bg-[#F9F9F9] text-[#070707] text-[18px];
   }
+
+  .background {
+    @apply bg-[#070707] text-[#FFFFFF] items-center text-center min-h-screen;
+  }
 }
