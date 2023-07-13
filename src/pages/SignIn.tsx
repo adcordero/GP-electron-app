@@ -19,10 +19,12 @@ export default function SignIn() {
     const signinresponse = await window.api.signin(formData);
 
     if (signinresponse.success) {
-      if (signinresponse.data) {
-        window.sessionStorage.setItem("token", signinresponse.data);
+      window.sessionStorage.setItem("token", signinresponse.token);
+      if (signinresponse.active) {
+        navigate("home");
+      } else {
+        navigate("/profileupdate");
       }
-      navigate("home");
     }
   };
 
