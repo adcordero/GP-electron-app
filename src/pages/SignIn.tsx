@@ -10,22 +10,20 @@ export default function SignIn() {
     {}
   );
 
+  const navigate = useNavigate();
+
   const submitHandler = async (
     event: React.SyntheticEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
-    const signinresponse: { success: boolean; message: string } =
-      await window.api.signin(formData);
+    const signinresponse = await window.api.signin(formData);
 
     if (signinresponse.success) {
+      if (signinresponse.data) {
+        window.sessionStorage.setItem("token", signinresponse.data);
+      }
       navigate("home");
     }
-  };
-
-  let navigate = useNavigate();
-
-  const routeChange = (toGo: string) => {
-    navigate(toGo);
   };
 
   return (
@@ -83,7 +81,7 @@ export default function SignIn() {
           <button
             className="h-8 w-28 bg-white-200/50 ml-9 rounded text-white-100 font-albert-sans"
             type="button"
-            onClick={() => routeChange("signup")}
+            onClick={() => navigate("/signup")}
           >
             Sign Up
           </button>

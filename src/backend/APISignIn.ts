@@ -8,8 +8,11 @@ export const SignInDataSchema = z.object({
 
 export async function APISingIn(
   formData: z.infer<typeof SignInDataSchema>
-): Promise<{ success: boolean; message: string }> {
-  let output = { success: false, message: "default" };
+): Promise<{ success: boolean; message: string; data?: string }> {
+  let output: { success: boolean; message: string; data?: string } = {
+    success: false,
+    message: "default",
+  };
 
   try {
     SignInDataSchema.parse(formData);
@@ -21,7 +24,11 @@ export async function APISingIn(
       .then(function (response) {
         if (response.data.body.success) {
           console.log("Successfully signed in!");
-          output = { success: true, message: "success" };
+          output = {
+            success: true,
+            message: "success",
+            data: response.data.body.token,
+          };
         } else {
           console.log("Invalid user details!");
           output = { success: false, message: "invalid user details" };
