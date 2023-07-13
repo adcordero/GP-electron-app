@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import "./home.css";
-import logo from "./images/GP_logomark_yellow.png";
-import footer from "./images/footer.png";
 import { z } from "zod";
 import { APIFillOutProfileDataSchema } from "../backend/APIFillOutProfile";
+import BaseForm from "@components/BaseForm";
 
 function EmailVerification() {
   const [formData, setFormData] = useState<
@@ -19,19 +17,7 @@ function EmailVerification() {
   };
 
   return (
-    <div className="body">
-      <div className="header">
-        <div>
-          <img src={logo} alt="Gamer Points™ logo" className="logo"></img>
-        </div>
-        <div>
-          <h1 className="brand">
-            GAMER POINTS<span className="tm">™</span>
-          </h1>
-          <h3 className="heading">EMAIL VERIFICATION</h3>
-        </div>
-      </div>
-
+    <BaseForm header="Email Verification">
       <form
         className="mx-[29px] grid grid-cols-2 text-left grid-flow-row gap-x-2"
         onSubmit={submitHandler}
@@ -56,14 +42,14 @@ function EmailVerification() {
             value="Clear"
             onClick={(e) => setFormData({})}
           />
-          <input className="button button-primary" type="submit" value="Verify" />
+          <input
+            className="button button-primary"
+            type="submit"
+            value="Verify"
+          />
         </div>
       </form>
-
-      <div className="footer">
-        <img src={footer} alt="GP Currency" className="w-screen h-max"></img>
-      </div>
-    </div>
+    </BaseForm>
   );
 }
 
