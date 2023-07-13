@@ -40,7 +40,7 @@ function EmailVerification() {
             className="button button-secondary"
             type="reset"
             value="Clear"
-            onClick={(e) => setFormData({})}
+            onClick={() => setFormData({})}
           />
           <input
             className="button button-primary"

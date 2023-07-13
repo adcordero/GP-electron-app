@@ -115,7 +115,7 @@ function SignUp() {
             className="button button-secondary"
             type="reset"
             value="Cancel"
-            onClick={(e) => setFormData({})}
+            onClick={() => setFormData({})}
           />
           <input
             className="button button-primary"

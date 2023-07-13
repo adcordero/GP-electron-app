@@ -12,8 +12,7 @@ export const APIFillOutProfileDataSchema = z.object({
 });
 
 export async function APIFillOutProfile(
-  formData: z.infer<typeof APIFillOutProfileDataSchema>,
-  confirmPassword: string
+  formData: z.infer<typeof APIFillOutProfileDataSchema>
 ) {
   try {
     APIFillOutProfileDataSchema.parse(formData);
