@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import "./home.css";
 import logo from "./images/GP_logomark_yellow.png";
 import footer from "./images/footer.png";
-import coins from "./images/coin.png";
 import { z } from "zod";
-import backend from "../backend";
 
 function SignUp() {
   const [formData, setFormData] = useState<
-    z.infer<typeof backend.schema.signup>
+    z.infer<typeof window.api.schema.signup>
   >({});
   const [confirmPassword, setconfirmPassword] = useState("");
 
@@ -17,7 +15,7 @@ function SignUp() {
   ) => {
     event.preventDefault();
 
-    const reponse = await backend.api.signup(formData, confirmPassword);
+    const reponse = await window.api.signup(formData, confirmPassword);
   };
 
   return (

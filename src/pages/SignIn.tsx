@@ -1,22 +1,20 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import signin_bg from "./images/sign_in.png";
 import logo from "./images/GP_logomark_yellow.png";
-import backend from "../backend";
 import { z } from "zod";
 
 export default function SignIn() {
   const [formData, setFormData] = useState<
-    z.infer<typeof backend.schema.signin>
+    z.infer<typeof window.api.schema.signin>
   >({});
-  const [confirmPassword, setconfirmPassword] = useState("");
 
   const submitHandler = async (
     event: React.SyntheticEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
     const signinresponse: { success: boolean; message: string } =
-      await backend.api.signin(formData);
+      await window.api.signin(formData);
 
     if (signinresponse.success) {
       navigate("home");
