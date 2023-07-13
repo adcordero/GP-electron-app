@@ -26,6 +26,5 @@
  * ```
  */
 
-import './App.css';
-// Add this to the end of the existing file
-import './main';
+import "./App.css";
+import "./pages/Router";
