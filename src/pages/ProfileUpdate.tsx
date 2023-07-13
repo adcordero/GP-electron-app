@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import "./home.css";
-import logo from "./images/GP_logomark_yellow.png";
-import footer from "./images/footer.png";
 import { z } from "zod";
 import { APIFillOutProfileDataSchema } from "../backend/APIFillOutProfile";
+import BaseForm from "@components/BaseForm";
 
 function ProfileUpdate() {
   const [formData, setFormData] = useState<
@@ -19,19 +17,7 @@ function ProfileUpdate() {
   };
 
   return (
-    <div className="body">
-      <div className="header">
-        <div>
-          <img src={logo} alt="Gamer Points™ logo" className="logo"></img>
-        </div>
-        <div>
-          <h1 className="brand">
-            GAMER POINTS<span className="tm">™</span>
-          </h1>
-          <h3 className="heading">PROFILE</h3>
-        </div>
-      </div>
-
+    <BaseForm header="Profile">
       <form
         className="mx-[29px] grid grid-cols-2 text-left grid-flow-row gap-x-2"
         onSubmit={submitHandler}
@@ -140,11 +126,7 @@ function ProfileUpdate() {
           <input className="button button-primary" type="submit" value="Save" />
         </div>
       </form>
-
-      <div className="footer">
-        <img src={footer} alt="GP Currency" className="w-screen h-max"></img>
-      </div>
-    </div>
+    </BaseForm>
   );
 }
 
