@@ -23,7 +23,7 @@ const BaseForm = ({ header, children }: Props) => {
       </div>
 
       {children}
-      <div>
+      <div className="fixed bottom-0">
         <img src={footer} alt="GP Currency" className="w-screen h-max"></img>
       </div>
     </div>
