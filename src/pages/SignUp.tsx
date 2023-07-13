@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./home.css";
 import { z } from "zod";
 import { SignUpDataSchema } from "../backend/APISignUp";
 import BaseForm from "@components/BaseForm";

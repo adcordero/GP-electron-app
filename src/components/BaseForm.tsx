@@ -10,15 +10,16 @@ type Props = {
 const BaseForm = ({ header, children }: Props) => {
   return (
     <div className="background">
-      <div className="header">
+      {/* <div className="header"> */}
+      <div className="text-center flex items-center justify-center">
         <div>
-          <img src={logo} alt="Gamer Points™ logo" className="logo"></img>
+          <img src={logo} alt="Gamer Points™ logo" className="w-[100px]"></img>
         </div>
-        <div>
-          <h1 className="brand">
-            GAMER POINTS<span className="tm">™</span>
+        <div className="font-albert-sans font-normal">
+          <h1 className="text-[40px] font-bold">
+            GAMER POINTS<span className="font-normal">™</span>
           </h1>
-          <h3 className="heading">{header}</h3>
+          <h3 className="text-[30px] top-[-15px] relative">{header}</h3>
         </div>
       </div>
 
