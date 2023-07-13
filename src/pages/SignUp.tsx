@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import "./home.css";
-import logo from "./images/GP_logomark_yellow.png";
-import footer from "./images/footer.png";
 import { z } from "zod";
 import { SignUpDataSchema } from "../backend/APISignUp";
-import FormHeader from "@components/FormHeader";
+import BaseForm from "@components/BaseForm";
 
 function SignUp() {
   const [formData, setFormData] = useState<z.infer<typeof SignUpDataSchema>>(
@@ -21,9 +19,7 @@ function SignUp() {
   };
 
   return (
-    <div className="background">
-      <FormHeader header={"REGISTRATION"} />
-
+    <BaseForm header="Sign Up">
       <form
         className="mx-[29px] grid grid-cols-2 text-left grid-flow-row gap-x-2"
         onSubmit={submitHandler}
@@ -129,11 +125,7 @@ function SignUp() {
           />
         </div>
       </form>
-
-      <div className="footer">
-        <img src={footer} alt="GP Currency" className="w-screen h-max"></img>
-      </div>
-    </div>
+    </BaseForm>
   );
 }
 
