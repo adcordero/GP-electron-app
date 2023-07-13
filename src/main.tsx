@@ -5,6 +5,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Home from "./pages/home";
+import ProfileUpdate from "./pages/ProfileUpdate";
 
 const container = document.getElementById("app");
 // Create a root.
@@ -23,6 +24,7 @@ root.render(
     <Routes>
       <Route path="/" Component={SignIn} />
       <Route path="/signup" Component={SignUp} />
+      <Route path="/profileupdate" Component={ProfileUpdate} />
       <Route path="/home" Component={Home} />
     </Routes>
   </HashRouter>
