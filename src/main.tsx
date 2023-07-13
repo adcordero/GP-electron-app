@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Home from "./pages/home";
 import ProfileUpdate from "./pages/ProfileUpdate";
+import EmailVerification from "./pages/EmailVerification";
 
 const container = document.getElementById("app");
 // Create a root.
@@ -22,9 +23,11 @@ root.render(
   // <ApolloProvider client={client}>
   <HashRouter>
     <Routes>
-      <Route path="/" Component={SignIn} />
+      {/* <Route path="/" Component={SignIn} /> */}
       <Route path="/signup" Component={SignUp} />
       <Route path="/profileupdate" Component={ProfileUpdate} />
+      {/* <Route path="/emailverify" Component={EmailVerification} /> */}
+      <Route path="/" Component={EmailVerification} />
       <Route path="/home" Component={Home} />
     </Routes>
   </HashRouter>
