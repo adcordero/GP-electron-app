@@ -4,6 +4,7 @@ import logo from "./images/GP_logomark_yellow.png";
 import footer from "./images/footer.png";
 import { z } from "zod";
 import { SignUpDataSchema } from "../backend/APISignUp";
+import FormHeader from "@components/FormHeader";
 
 function SignUp() {
   const [formData, setFormData] = useState<z.infer<typeof SignUpDataSchema>>(
@@ -20,18 +21,8 @@ function SignUp() {
   };
 
   return (
-    <div className="body">
-      <div className="header">
-        <div>
-          <img src={logo} alt="Gamer Points™ logo" className="logo"></img>
-        </div>
-        <div>
-          <h1 className="brand">
-            GAMER POINTS<span className="tm">™</span>
-          </h1>
-          <h3 className="heading">REGISTRATION</h3>
-        </div>
-      </div>
+    <div className="background">
+      <FormHeader header={"REGISTRATION"} />
 
       <form
         className="mx-[29px] grid grid-cols-2 text-left grid-flow-row gap-x-2"
