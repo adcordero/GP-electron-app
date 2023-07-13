@@ -4,7 +4,7 @@
 
 @layer components {
   .button {
-    @apply p-[5px] w-[200px] rounded-[4px] text-[#070707];
+    @apply p-[5px] w-[200px] rounded-[4px] text-[#070707] cursor-pointer;
   }
   .button-primary {
     @apply bg-brand-primary;
@@ -15,7 +15,6 @@
   .input {
     @apply rounded-[5px] bg-[#F9F9F9] text-[#070707] text-[18px];
   }
-
   .background {
     @apply bg-[#070707] text-[#FFFFFF] items-center text-center min-h-screen;
   }
