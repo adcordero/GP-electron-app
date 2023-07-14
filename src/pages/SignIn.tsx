@@ -106,7 +106,7 @@ export default function SignIn() {
             Sign Up
           </button>
           <input
-            className="h-8 w-28 bg-yellow-300/50 ml-8 rounded text-white-100 font-albert-sans"
+            className="h-8 w-28 bg-yellow-300/50 ml-8 rounded text-white-100 font-albert-sans cursor-pointer"
             // style={{ backgroundColor: "#F2CB05" }}
             type="submit"
             value="Log In"
@@ -114,11 +114,11 @@ export default function SignIn() {
         </div>
       </form>
 
-      <div className="justify-items-center items-center pt-8 pl-10">
+      <div className="justify-items-center items-center pt-5 pl-10">
         <p className="text-yellow-500 font-albert-sans font-bold text-base">
           TURN YOUR GAMING <br /> PASSION INTO PROFESSION
         </p>
-        <p className="text-white-100 font-poppins text-xs pt-1.5 pb-2">
+        <p className="text-white-100 font-poppins text-xs pt-1.5 pb-5">
           <span className="font-semibold">Gamer Points™</span> is a
           gaming/ad-tech <br /> company platform that allows you to <br />{" "}
           passively earn real world money by <br />

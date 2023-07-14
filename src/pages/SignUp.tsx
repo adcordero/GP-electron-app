@@ -69,7 +69,13 @@ function SignUp() {
           ></input>
         </div>
 
-        <div className="col-span-2 flex justify-evenly align-middle my-[30px]">
+        <div className="col-span-2 flex justify-evenly align-middle my-[30px] font-albert-sans">
+          <input
+            className="button bg-black-200 text-white-200"
+            type="button"
+            value="Log In"
+            onClick={() => navigate("/")}
+          />
           <input
             className="button button-secondary"
             type="reset"

@@ -29,7 +29,7 @@ export default {
       },
       fontFamily: {
         "albert-sans": '"Albert Sans"',
-        poppins: '"Poppins"',
+        "poppins": '"Poppins"',
       },
       height: {
         'overall': '479px',
