@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { z } from "zod";
 import { SignUpDataSchema } from "../backend/APISignUp";
 import BaseForm from "@components/BaseForm";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [formData, setFormData] = useState<z.infer<typeof SignUpDataSchema>>(
@@ -9,12 +10,20 @@ function SignUp() {
   );
   const [confirmPassword, setconfirmPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const submitHandler = async (
     event: React.SyntheticEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
 
-    const reponse = await window.api.signup(formData, confirmPassword);
+    const signupResponse = await window.api.signup(formData, confirmPassword);
+
+    if (signupResponse.success) {
+      navigate("/");
+    } else {
+      console.log(signupResponse.message);
+    }
   };
 
   return (
