@@ -1,27 +1,24 @@
 import axios from "axios";
 import { z } from "zod";
+import { User } from "./APITypes";
 
 export const SignInDataSchema = z.object({
   email: z.string().email(),
   password: z.string(),
 });
 
-export async function APISingIn(
-  formData: z.infer<typeof SignInDataSchema>
-): Promise<{
+type SignInOutput = {
   success: boolean;
   message: string;
   token?: string;
   active?: boolean;
-  ign?: string;
-}> {
-  let output: {
-    success: boolean;
-    message: string;
-    token?: string;
-    active?: boolean;
-    ign?: string;
-  } = {
+  user?: User;
+};
+
+export async function APISingIn(
+  formData: z.infer<typeof SignInDataSchema>
+): Promise<SignInOutput> {
+  let output: SignInOutput = {
     success: false,
     message: "default",
   };
@@ -41,7 +38,7 @@ export async function APISingIn(
             message: "success",
             token: response.data.body.token,
             active: response.data.body.active,
-            ign: response.data.body.ign,
+            user: response.data.body.user,
           };
         } else {
           console.log("Invalid user details!");
