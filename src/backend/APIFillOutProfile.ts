@@ -42,22 +42,26 @@ export async function APIFillOutProfile(
       )
       .then(function (response) {
         if (response.data.body.success) {
-          console.log("Successfully signed up!");
+          console.log("Profile updated!");
           output = {
             success: true,
-            message: "success",
+            message: "Profile updated!",
             user: response.data.body.user,
           };
         } else {
-          console.log("User exists.");
+          console.log("Profile did not update.");
           output = {
             success: false,
-            message: "database error",
+            message: "Profile did not update.",
           };
         }
       })
       .catch(function (error) {
         console.log(error);
+        output = {
+          success: false,
+          message: `Error in fetch: ${error}`,
+        };
       });
   } catch (err) {
     if (err instanceof z.ZodError) {
@@ -65,7 +69,7 @@ export async function APIFillOutProfile(
       console.log(err.issues);
       output = {
         success: false,
-        message: "Input invalid",
+        message: `Field: ${err.issues[0].path[0]} - ${err.issues[0].message}`,
       };
     }
   }
