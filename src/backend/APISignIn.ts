@@ -35,25 +35,27 @@ export async function APISingIn(
           console.log("Successfully signed in!");
           output = {
             success: true,
-            message: "success",
+            message: "Successfully signed in!",
             token: response.data.body.token,
             active: response.data.body.active,
             user: response.data.body.user,
           };
         } else {
           console.log("Invalid user details!");
-          output = { success: false, message: "invalid user details" };
+          output = { success: false, message: "Invalid user details!" };
         }
       })
       .catch(function (error) {
         console.log(error);
-        output = { success: false, message: "error occurred" };
+        output = { success: false, message: "Error occurred" };
       });
   } catch (err) {
     if (err instanceof z.ZodError) {
-      console.log(`Field: ${err.issues[0].path[0]} - ${err.issues[0].message}`);
       console.log(err.issues);
-      output = { success: false, message: "error catch" };
+      output = {
+        success: false,
+        message: `Field: ${err.issues[0].path[0]} - ${err.issues[0].message}`,
+      };
     }
   }
 

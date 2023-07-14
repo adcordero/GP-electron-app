@@ -5,6 +5,7 @@ import logo from "./images/GP_logomark_yellow.png";
 import { z } from "zod";
 import { SignInDataSchema } from "../backend/APISignIn";
 import { User } from "../backend/APITypes";
+import toast from "react-hot-toast";
 
 export default function SignIn() {
   const [formData, setFormData] = useState<z.infer<typeof SignInDataSchema>>(
@@ -40,6 +41,8 @@ export default function SignIn() {
         window.sessionStorage.setItem("user", JSON.stringify(tempuser));
         navigate("/profileupdate");
       }
+    } else {
+      toast.error(signinresponse.message);
     }
   };
 
