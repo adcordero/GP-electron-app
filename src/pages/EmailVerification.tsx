@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { z } from "zod";
-import { APIFillOutProfileDataSchema } from "../backend/APIFillOutProfile";
+import { FillOutProfileDataSchema } from "../backend/APIFillOutProfile";
 import BaseForm from "@components/BaseForm";
 
 function EmailVerification() {
   const [formData, setFormData] = useState<
-    z.infer<typeof APIFillOutProfileDataSchema>
+    z.infer<typeof FillOutProfileDataSchema>
   >({});
 
   const submitHandler = async (
