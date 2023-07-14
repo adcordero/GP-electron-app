@@ -1,6 +1,6 @@
 import React from "react";
-import footer from "../pages/images/footer.png";
-import logo from "../pages/images/GP_logomark_yellow.png";
+import footer from "@images/footer.png";
+import logo from "@images/GP_logomark_yellow.png";
 
 type Props = {
   header: string;

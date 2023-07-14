@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import home_bg from "./images/landing.png";
-import { User } from "../backend/APITypes";
+import home_bg from "@images/landing.png";
+import { User } from "@backend/APITypes";
 
 export default function Home() {
   const navigate = useNavigate();

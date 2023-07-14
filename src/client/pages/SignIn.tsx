@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import signin_bg from "./images/sign_in.png";
-import logo from "./images/GP_logomark_yellow.png";
+import signin_bg from "@images/sign_in.png";
+import logo from "@images/GP_logomark_yellow.png";
 import { z } from "zod";
-import { SignInDataSchema } from "../backend/APISignIn";
-import { User } from "../backend/APITypes";
+import { SignInDataSchema } from "@backend/APISignIn";
+import { User } from "@backend/APITypes";
 import toast from "react-hot-toast";
 
 export default function SignIn() {

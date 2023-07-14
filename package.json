@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "Gamer Points App",
   "main": ".webpack/main",
+  "author": {"name": "Gamer Points"},
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",

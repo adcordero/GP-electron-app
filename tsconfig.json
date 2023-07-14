@@ -14,7 +14,9 @@
     "resolveJsonModule": true,
     "paths": {
       "*": ["node_modules/*"],
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/client/components/*"],
+      "@backend/*": ["src/backend/*"],
+      "@images/*": ["src/client/images/*"]
     }
   },
   "include": ["src/**/*"]

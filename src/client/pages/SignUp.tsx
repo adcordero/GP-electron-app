@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { z } from "zod";
-import { SignUpDataSchema } from "../backend/APISignUp";
+import { SignUpDataSchema } from "@backend/APISignUp";
 import BaseForm from "@components/BaseForm";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";

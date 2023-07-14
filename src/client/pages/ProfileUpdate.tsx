@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { z } from "zod";
-import { FillOutProfileDataSchema } from "../backend/APIFillOutProfile";
+import { FillOutProfileDataSchema } from "@backend/APIFillOutProfile";
 import BaseForm from "@components/BaseForm";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";

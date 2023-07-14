@@ -23,7 +23,9 @@ export const rendererConfig: Configuration = {
   resolve: {
     extensions: [".js", ".ts", ".jsx", ".tsx", ".css"],
     alias: {
-      "@components": path.resolve(__dirname, "./src/components"),
+      "@components": path.resolve(__dirname, "./src/client/components"),
+      "@images": path.resolve(__dirname, "./src/client/images"),
+      "@backend": path.resolve(__dirname, "./src/backend"),
     },
   },
 };
