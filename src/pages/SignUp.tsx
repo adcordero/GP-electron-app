@@ -3,6 +3,7 @@ import { z } from "zod";
 import { SignUpDataSchema } from "../backend/APISignUp";
 import BaseForm from "@components/BaseForm";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function SignUp() {
   const [formData, setFormData] = useState<z.infer<typeof SignUpDataSchema>>(
@@ -23,6 +24,7 @@ function SignUp() {
       navigate("/");
     } else {
       console.log(signupResponse.message);
+      toast.error(signupResponse.message);
     }
   };
 

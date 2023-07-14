@@ -3,6 +3,7 @@ import { z } from "zod";
 import { FillOutProfileDataSchema } from "../backend/APIFillOutProfile";
 import BaseForm from "@components/BaseForm";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function ProfileUpdate() {
   const [formData, setFormData] = useState<
@@ -28,6 +29,7 @@ function ProfileUpdate() {
       navigate("/home");
     } else {
       console.log(filloutprofileresponse.message);
+      toast.error(filloutprofileresponse.message);
     }
   };
 
