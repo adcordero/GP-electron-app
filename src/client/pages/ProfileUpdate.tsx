@@ -16,7 +16,7 @@ function ProfileUpdate() {
     const userdata = JSON.parse(window.sessionStorage.getItem("user"));
     if (userdata)
       setFormData((prev) => {
-        return { ...prev, ...userdata };
+        return { ...prev, ...userdata, sex: "male" };
       });
   }, [window.history.length]);
 
