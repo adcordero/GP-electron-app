@@ -13,7 +13,11 @@ function ProfileUpdate() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setFormData(JSON.parse(window.sessionStorage.getItem("user")));
+    const userdata = JSON.parse(window.sessionStorage.getItem("user"));
+    if (userdata)
+      setFormData((prev) => {
+        return { ...prev, ...userdata };
+      });
   }, [window.history.length]);
 
   const submitHandler = async (
@@ -33,6 +37,11 @@ function ProfileUpdate() {
     }
   };
 
+  const inputHandler = (e: React.ChangeEvent<any>) =>
+    setFormData((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+
   const [areaCode, setAreaCode] = useState("+63");
 
   return (
@@ -46,12 +55,9 @@ function ProfileUpdate() {
           <input
             type="text"
             className="input"
-            onChange={(e) =>
-              setFormData((prev) => {
-                return { ...prev, fullname: e.target.value };
-              })
-            }
-          ></input>
+            name="fullname"
+            onChange={inputHandler}
+          />
         </div>
 
         <div className="flex flex-col col-span-2">
@@ -59,24 +65,17 @@ function ProfileUpdate() {
           <input
             type="text"
             className="input"
-            onChange={(e) =>
-              setFormData((prev) => {
-                return { ...prev, ign: e.target.value };
-              })
-            }
-          ></input>
+            name="ign"
+            onChange={inputHandler}
+          />
         </div>
 
         <div className="flex flex-col">
           <label>Sex</label>
           <select
-            name="sex"
             className="input"
-            onChange={(e) =>
-              setFormData((prev) => {
-                return { ...prev, sex: e.target.value };
-              })
-            }
+            name="sex"
+            onChange={inputHandler}
             defaultValue={"male"}
           >
             <option value="male" defaultChecked>
@@ -91,6 +90,7 @@ function ProfileUpdate() {
           <input
             type="date"
             className="input pl-1"
+            name="birthday"
             onChange={(e) =>
               setFormData((prev) => {
                 return { ...prev, birthday: new Date(e.target.value) };
@@ -105,9 +105,7 @@ function ProfileUpdate() {
             <select
               name="area-code"
               className="input"
-              onChange={(e) =>
-                setAreaCode(e.target.value)
-              }
+              onChange={(e) => setAreaCode(e.target.value)}
               defaultValue={"+63"}
             >
               <option value="+63" defaultChecked>
@@ -121,7 +119,7 @@ function ProfileUpdate() {
               placeholder="9XXXXXXXXX"
               onChange={(e) =>
                 setFormData((prev) => {
-                  return { ...prev, phone: (areaCode + e.target.value) };
+                  return { ...prev, phone: areaCode + e.target.value };
                 })
               }
             ></input>
@@ -133,12 +131,9 @@ function ProfileUpdate() {
           <input
             type="input"
             className="input"
-            onChange={(e) =>
-              setFormData((prev) => {
-                return { ...prev, discord: e.target.value };
-              })
-            }
-          ></input>
+            name="discord"
+            onChange={inputHandler}
+          />
         </div>
 
         <div className="col-span-2 flex justify-evenly align-middle my-[30px]">
