@@ -33,6 +33,8 @@ function ProfileUpdate() {
     }
   };
 
+  const [areaCode, setAreaCode] = useState("+63");
+
   return (
     <BaseForm header="Profile">
       <form
@@ -88,7 +90,7 @@ function ProfileUpdate() {
           <label>Birthday</label>
           <input
             type="date"
-            className="input"
+            className="input pl-1"
             onChange={(e) =>
               setFormData((prev) => {
                 return { ...prev, birthday: new Date(e.target.value) };
@@ -99,15 +101,31 @@ function ProfileUpdate() {
 
         <div className="flex flex-col">
           <label>Phone Number</label>
-          <input
-            type="text"
-            className="input"
-            onChange={(e) =>
-              setFormData((prev) => {
-                return { ...prev, phone: e.target.value };
-              })
-            }
-          ></input>
+          <div className="col-span-2 flex align-middle">
+            <select
+              name="area-code"
+              className="input"
+              onChange={(e) =>
+                setAreaCode(e.target.value)
+              }
+              defaultValue={"+63"}
+            >
+              <option value="+63" defaultChecked>
+                +63
+              </option>
+              <option value="+1">+1</option>
+            </select>
+            <input
+              type="text"
+              className="input ml-2 pl-1 w-full"
+              placeholder="9XXXXXXXXX"
+              onChange={(e) =>
+                setFormData((prev) => {
+                  return { ...prev, phone: (areaCode + e.target.value) };
+                })
+              }
+            ></input>
+          </div>
         </div>
 
         <div className="flex flex-col">
