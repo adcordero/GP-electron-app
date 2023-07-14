@@ -2,9 +2,6 @@ import axios from "axios";
 import { z } from "zod";
 
 export const SignUpDataSchema = z.object({
-  firstname: z.string().min(1),
-  lastname: z.string().min(1),
-  birthday: z.coerce.date(),
   email: z.string().email(),
   password: z.string().min(8, "Must be atleast 8 characters long"),
 });

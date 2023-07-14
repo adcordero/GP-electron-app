@@ -34,58 +34,6 @@ function SignUp() {
         className="mx-[29px] grid grid-cols-2 text-left grid-flow-row gap-x-2"
         onSubmit={submitHandler}
       >
-        <div className="flex flex-col">
-          <label>First Name</label>
-          <input
-            type="text"
-            className="input"
-            onChange={(e) =>
-              setFormData((prev) => {
-                return { ...prev, firstname: e.target.value };
-              })
-            }
-          ></input>
-        </div>
-
-        <div className="flex flex-col">
-          <label>Last Name</label>
-          <input
-            type="text"
-            className="input"
-            onChange={(e) =>
-              setFormData((prev) => {
-                return { ...prev, lastname: e.target.value };
-              })
-            }
-          ></input>
-        </div>
-
-        <div className="flex flex-col">
-          <label>Birthday</label>
-          <input
-            type="date"
-            className="input"
-            onChange={(e) =>
-              setFormData((prev) => {
-                return { ...prev, birthday: new Date(e.target.value) };
-              })
-            }
-          ></input>
-        </div>
-
-        <div className="flex flex-col">
-          <label>Username</label>
-          <input
-            type="text"
-            className="input"
-            // onChange={(e) =>
-            //   setFormData((prev) => {
-            //     return { ...prev, username: e.target.value };
-            //   })
-            // }
-          ></input>
-        </div>
-
         <div className="flex flex-col col-span-2">
           <label>Email</label>
           <input
