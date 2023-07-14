@@ -11,7 +11,7 @@ export type SignUpOutput = {
   message: string;
 };
 
-export async function APISingUp(
+export async function APISignUp(
   formData: z.infer<typeof SignUpDataSchema>,
   confirmPassword: string
 ): Promise<SignUpOutput> {

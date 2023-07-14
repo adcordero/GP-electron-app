@@ -2,7 +2,7 @@ import { ipcRenderer } from "electron";
 import { z } from "zod";
 import IPC from "./IPCChannels";
 import { APISingIn, SignInDataSchema } from "./APISignIn";
-import { APISingUp, SignUpDataSchema } from "./APISignUp";
+import { APISignUp, SignUpDataSchema } from "./APISignUp";
 import {
   APIFillOutProfile,
   FillOutProfileDataSchema,
@@ -34,6 +34,6 @@ export const API = {
 
 export type apiInterface = {
   signin: typeof APISingIn;
-  signup: typeof APISingUp;
+  signup: typeof APISignUp;
   filloutprofile: typeof APIFillOutProfile;
 };

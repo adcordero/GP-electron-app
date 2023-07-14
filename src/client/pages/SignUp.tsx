@@ -28,6 +28,11 @@ function SignUp() {
     }
   };
 
+  const inputHandler = (e: React.ChangeEvent<any>) =>
+    setFormData((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+
   return (
     <BaseForm header="Sign Up">
       <form
@@ -39,12 +44,9 @@ function SignUp() {
           <input
             type="email"
             className="input"
-            onChange={(e) =>
-              setFormData((prev) => {
-                return { ...prev, email: e.target.value };
-              })
-            }
-          ></input>
+            name="email"
+            onChange={inputHandler}
+          />
         </div>
 
         <div className="flex flex-col">
@@ -52,12 +54,9 @@ function SignUp() {
           <input
             type="text"
             className="input"
-            onChange={(e) =>
-              setFormData((prev) => {
-                return { ...prev, password: e.target.value };
-              })
-            }
-          ></input>
+            name="password"
+            onChange={inputHandler}
+          />
         </div>
 
         <div className="flex flex-col">
