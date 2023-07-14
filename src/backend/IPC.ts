@@ -12,6 +12,6 @@ ipcMain.handle(IPC.signup, async (event, formData, confirmPassword) => {
   return await APISingUp(formData, confirmPassword);
 });
 
-ipcMain.handle(IPC.filloutprofile, async (event, formData, confirmPassword) => {
-  return await APIFillOutProfile(formData, confirmPassword);
+ipcMain.handle(IPC.filloutprofile, async (event, formData) => {
+  return await APIFillOutProfile(formData);
 });

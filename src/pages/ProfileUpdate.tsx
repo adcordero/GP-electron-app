@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { z } from "zod";
-import { APIFillOutProfileDataSchema } from "../backend/APIFillOutProfile";
+import { FillOutProfileDataSchema } from "../backend/APIFillOutProfile";
 import BaseForm from "@components/BaseForm";
 
 function ProfileUpdate() {
   const [formData, setFormData] = useState<
-    z.infer<typeof APIFillOutProfileDataSchema>
+    z.infer<typeof FillOutProfileDataSchema>
   >({});
 
   const submitHandler = async (
     event: React.SyntheticEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
-
-    // const reponse = await window.api.signup(formData, confirmPassword);
+    const reponse = await window.api.filloutprofile(formData);
   };
 
   return (
@@ -22,7 +21,7 @@ function ProfileUpdate() {
         className="mx-[29px] grid grid-cols-2 text-left grid-flow-row gap-x-2"
         onSubmit={submitHandler}
       >
-        <div className="flex flex-col">
+        <div className="flex flex-col col-span-2">
           <label>Full Name</label>
           <input
             type="text"
@@ -35,7 +34,7 @@ function ProfileUpdate() {
           ></input>
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col col-span-2">
           <label>IGN (In Game Name)</label>
           <input
             type="text"
@@ -43,19 +42,6 @@ function ProfileUpdate() {
             onChange={(e) =>
               setFormData((prev) => {
                 return { ...prev, ign: e.target.value };
-              })
-            }
-          ></input>
-        </div>
-
-        <div className="flex flex-col">
-          <label>Display Name</label>
-          <input
-            type="text"
-            className="input"
-            onChange={(e) =>
-              setFormData((prev) => {
-                return { ...prev, displayname: e.target.value };
               })
             }
           ></input>
@@ -97,20 +83,20 @@ function ProfileUpdate() {
             className="input"
             onChange={(e) =>
               setFormData((prev) => {
-                return { ...prev, phonenumber: e.target.value };
+                return { ...prev, phone: e.target.value };
               })
             }
           ></input>
         </div>
 
-        <div className="flex flex-col col-span-2">
+        <div className="flex flex-col">
           <label>Discord (Optional)</label>
           <input
-            type="email"
+            type="input"
             className="input"
             onChange={(e) =>
               setFormData((prev) => {
-                return { ...prev, email: e.target.value };
+                return { ...prev, discord: e.target.value };
               })
             }
           ></input>

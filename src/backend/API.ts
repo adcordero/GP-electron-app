@@ -1,8 +1,13 @@
 import { ipcRenderer } from "electron";
+import { z } from "zod";
+import IPC from "./IPCChannels";
 import { APISingIn, SignInDataSchema } from "./APISignIn";
 import { APISingUp, SignUpDataSchema } from "./APISignUp";
-import IPC from "./IPCChannels";
-import { z } from "zod";
+import {
+  APIFillOutProfile,
+  FillOutProfileDataSchema,
+  FillOutProfileOutput,
+} from "./APIFillOutProfile";
 
 export const API = {
   signin: async function (formData: z.infer<typeof SignInDataSchema>): Promise<{
@@ -20,9 +25,15 @@ export const API = {
   }> {
     return await ipcRenderer.invoke(IPC.signup, formData, confirmPassword);
   },
+  filloutprofile: async function (
+    formData: z.infer<typeof FillOutProfileDataSchema>
+  ): Promise<FillOutProfileOutput> {
+    return await ipcRenderer.invoke(IPC.filloutprofile, formData);
+  },
 };
 
 export type apiInterface = {
   signin: typeof APISingIn;
   signup: typeof APISingUp;
+  filloutprofile: typeof APIFillOutProfile;
 };
