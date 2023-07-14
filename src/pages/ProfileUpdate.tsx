@@ -1,18 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { z } from "zod";
 import { FillOutProfileDataSchema } from "../backend/APIFillOutProfile";
 import BaseForm from "@components/BaseForm";
+import { useNavigate } from "react-router-dom";
 
 function ProfileUpdate() {
   const [formData, setFormData] = useState<
     z.infer<typeof FillOutProfileDataSchema>
-  >({});
+  >({ sex: "Male" });
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setFormData(JSON.parse(window.sessionStorage.getItem("user")));
+  }, [window.history.length]);
 
   const submitHandler = async (
     event: React.SyntheticEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
-    const reponse = await window.api.filloutprofile(formData);
+    const filloutprofileresponse = await window.api.filloutprofile(formData);
+    if (filloutprofileresponse.success) {
+      window.sessionStorage.setItem(
+        "user",
+        JSON.stringify(filloutprofileresponse.user)
+      );
+      navigate("/home");
+    } else {
+      console.log(filloutprofileresponse.message);
+    }
   };
 
   return (
@@ -58,7 +74,9 @@ function ProfileUpdate() {
               })
             }
           >
-            <option value="male">Male</option>
+            <option value="male" defaultChecked>
+              Male
+            </option>
             <option value="female">Female</option>
           </select>
         </div>
