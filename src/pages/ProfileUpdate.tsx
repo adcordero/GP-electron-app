@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 function ProfileUpdate() {
   const [formData, setFormData] = useState<
     z.infer<typeof FillOutProfileDataSchema>
-  >({ sex: "Male" });
+  >({ sex: "male" });
 
   const navigate = useNavigate();
 
@@ -75,6 +75,7 @@ function ProfileUpdate() {
                 return { ...prev, sex: e.target.value };
               })
             }
+            defaultValue={"male"}
           >
             <option value="male" defaultChecked>
               Male

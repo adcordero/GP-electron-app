@@ -46,7 +46,7 @@ export async function APIFillOutProfile(
           output = {
             success: true,
             message: "success",
-            user: response.data.body.user.Attributes,
+            user: response.data.body.user,
           };
         } else {
           console.log("User exists.");
