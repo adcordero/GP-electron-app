@@ -15,6 +15,7 @@ const createWindow = (): void => {
   const mainWindow = new BrowserWindow({
     height: 526,
     width: 830,
+    show: false,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
@@ -23,6 +24,22 @@ const createWindow = (): void => {
 
   // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+
+  var splash = new BrowserWindow({
+    height: 526,
+    width: 830,
+    // transparent: true,
+    frame: false,
+    alwaysOnTop: true
+  });
+
+  splash.loadFile('src/loading.html');
+  splash.center();
+
+  setTimeout(function () {
+    splash.close();
+    mainWindow.show();
+  }, 4500);
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();

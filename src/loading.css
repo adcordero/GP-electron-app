@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    /* background-color: "#070707"; */
+    font-family: 'Poppins';
+    background-image: url('./pages/images/landing.png');
+    height: fit-content;
+    width: fit-content;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.loading-bar{
+    width: 500px;
+    height: 2em;
+    background-color: #F9F9F9;
+    opacity: .8;
+    border-radius: 1.5em;
+    color: #070707;
+    /* align-items: center; */
+    position: relative;
+    top: 250px;
+    left: 185px;
+    /* margin: -50px 0 0 -20px; */
+}
+
+.loading-bar::before{
+    content: attr(data-label);
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: .3em;
+    top: .3em;
+    bottom: .3em;
+    /* width: 0%; */
+    /* width: calc(var(--width, 0) * 1%); */
+    min-width: 2rem;
+    max-width: calc(100% - .6em);
+    background-color: #F2CB05;
+    border-radius: 1em;
+    padding: .3em;
+    animation: progress-animation 5s forwards;
+}
+
+@keyframes progress-animation{
+    0% { width: 0%; }
+    100% { width: 100% }
+}
