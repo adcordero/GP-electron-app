@@ -5,7 +5,6 @@ import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import Home from "./home";
 import ProfileUpdate from "./ProfileUpdate";
-import EmailVerification from "./EmailVerification";
 import { Toaster } from "react-hot-toast";
 
 const container = document.getElementById("app");
@@ -20,7 +19,6 @@ root.render(
         <Route path="/home" Component={Home} />
         <Route path="/signup" Component={SignUp} />
         <Route path="/profileupdate" Component={ProfileUpdate} />
-        <Route path="/emailverify" Component={EmailVerification} />
       </Routes>
     </HashRouter>
   </>
