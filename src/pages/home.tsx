@@ -5,9 +5,6 @@ import { User } from "../backend/APITypes";
 
 export default function Home() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState(
-    window.sessionStorage.getItem("token")
-  );
 
   const [userInfo] = useState<User>(
     JSON.parse(window.sessionStorage.getItem("user"))
