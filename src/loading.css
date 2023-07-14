@@ -9,7 +9,7 @@ body {
     margin: 0;
     /* background-color: "#070707"; */
     font-family: 'Poppins';
-    background-image: url('./pages/images/landing.png');
+    background-image: url('./client/images/landing.png');
     height: fit-content;
     width: fit-content;
     background-position: center;
