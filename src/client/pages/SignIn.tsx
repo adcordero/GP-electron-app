@@ -46,10 +46,13 @@ export default function SignIn() {
     }
   };
 
+  const inputHandler = (e: React.ChangeEvent<any>) =>
+    setFormData((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+
   return (
     <div style={{ backgroundImage: `url(${signin_bg})` }}>
-      {/* <h2>SignIn Page</h2>
-      <Link to="/home">goto home page</Link> */}
       <div className="flex justify-items-center items-center text-center pt-5 pl-16">
         <img src={logo} alt="Gamer Points™ Logo" className="w-28"></img>
         <h1 className="text-white-200 flex text-5xl font-albert-sans font-bold">
@@ -72,12 +75,8 @@ export default function SignIn() {
           <input
             type="email"
             className="bg-white-200 w-5/12 rounded"
-            // style={{ width: "365px", borderRadius: "5px"}}
-            onChange={(e) =>
-              setFormData((prev) => {
-                return { ...prev, email: e.target.value };
-              })
-            }
+            name="email"
+            onChange={inputHandler}
           ></input>
         </div>
 
@@ -89,11 +88,8 @@ export default function SignIn() {
           <input
             type="password"
             className="bg-white-200 w-5/12 rounded"
-            onChange={(e) =>
-              setFormData((prev) => {
-                return { ...prev, password: e.target.value };
-              })
-            }
+            name="password"
+            onChange={inputHandler}
           ></input>
         </div>
 
