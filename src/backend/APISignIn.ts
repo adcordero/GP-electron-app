@@ -32,17 +32,17 @@ export async function APISingIn(
       )
       .then(function (response) {
         if (response.data.body.success) {
-          console.log("Successfully signed in!");
+          console.log(response.data.body.message);
           output = {
             success: true,
-            message: "Successfully signed in!",
+            message: response.data.body.message,
             token: response.data.body.token,
             active: response.data.body.active,
             user: response.data.body.user,
           };
         } else {
-          console.log("Invalid user details!");
-          output = { success: false, message: "Invalid user details!" };
+          console.log(response.data.body.message);
+          output = { success: false, message: response.data.body.message };
         }
       })
       .catch(function (error) {
