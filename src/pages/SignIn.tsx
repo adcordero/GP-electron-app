@@ -4,6 +4,7 @@ import signin_bg from "./images/sign_in.png";
 import logo from "./images/GP_logomark_yellow.png";
 import { z } from "zod";
 import { SignInDataSchema } from "../backend/APISignIn";
+import { User } from "../backend/APITypes";
 
 export default function SignIn() {
   const [formData, setFormData] = useState<z.infer<typeof SignInDataSchema>>(
@@ -21,8 +22,22 @@ export default function SignIn() {
     if (signinresponse.success) {
       window.sessionStorage.setItem("token", signinresponse.token);
       if (signinresponse.active) {
+        window.sessionStorage.setItem(
+          "user",
+          JSON.stringify(signinresponse.user)
+        );
         navigate("home");
       } else {
+        const tempuser: User = {
+          birthday: "",
+          discord: "",
+          email: formData.email,
+          fullname: "",
+          ign: "",
+          phone: "",
+          sex: "",
+        };
+        window.sessionStorage.setItem("user", JSON.stringify(tempuser));
         navigate("/profileupdate");
       }
     }
